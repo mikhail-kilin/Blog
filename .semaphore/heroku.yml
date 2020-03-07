@@ -27,5 +27,5 @@ blocks:
       jobs:
         - name: Deploy to Production
           commands:
-            - git remote add heroku https://git.heroku.com/fs-rails-base.git
+            - git remote add heroku https://git.heroku.com/rails-blog-task.git
             - git push heroku -f $SEMAPHORE_GIT_BRANCH:master
