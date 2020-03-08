@@ -1,10 +1,14 @@
-ul.top-bar-right.menu.dropdown(data-dropdown-menu)
-  - if user_signed_in?
-    li
-      a = current_user.full_name
-      ul.menu
-        li = link_to "Edit profile", edit_user_registration_path
-        li = link_to "Sign out", destroy_user_session_path
-  - else
-    = active_link_to "Sign in", new_user_session_path, active: :exclusive, wrap_tag: :li
-    = active_link_to "Sign up", new_user_registration_path, active: :exclusive, wrap_tag: :li
+- if user_signed_in?
+  div class="btn-group"
+    button type="button" class="btn dropdown-toggle dropdown-top-line-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+      = current_user.full_name
+    div class="dropdown-menu"
+      = link_to "Edit profile", edit_user_registration_path, class: "dropdown-item top-line-button"
+      = link_to "Sign out", destroy_user_session_path, class: "dropdown-item top-line-button"
+
+- else 
+  ul class="nav nav-pills" id="myTab2" role="tablist"
+    li.nav-item
+      = link_to "Sign in", new_user_session_path, class: "nav-link top-line-button #{ yield :sign_in }"
+    li.nav-item
+      = link_to "Sign up", new_user_registration_path, class: "nav-link top-line-button #{ yield :sign_up }"

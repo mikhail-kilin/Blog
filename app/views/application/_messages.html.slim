@@ -1,5 +1,10 @@
-- flash.each do |type, content|
-  div(class="callout #{type}" data-closable)
-    = content
-    button.close-button(tabindex="0" aria-label="Dismiss alert" type="button" data-close)
+- if notice
+  .alert.alert-info.alert-dismissible.fade.show role="alert"
+    button type="button" class="close" data-dismiss="alert" aria-label="Close"
       span aria-hidden="true" &times;
+    = notice
+- if alert
+  .alert.alert-warning.alert-dismissible.fade.show role="alert"
+    button type="button" class="close" data-dismiss="alert" aria-label="Close"
+      span aria-hidden="true" &times;
+    = alert
