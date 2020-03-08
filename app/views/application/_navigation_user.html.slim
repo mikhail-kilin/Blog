@@ -1,12 +1,13 @@
 - if user_signed_in?
   div class="btn-group"
-    button type="button" class="btn dropdown-toggle dropdown-top-line-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+    button (type="button" class="btn dropdown-toggle dropdown-top-line-button"
+     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
       = current_user.full_name
     div class="dropdown-menu"
       = link_to "Edit profile", edit_user_registration_path, class: "dropdown-item top-line-button"
       = link_to "Sign out", destroy_user_session_path, class: "dropdown-item top-line-button"
 
-- else 
+- else
   ul class="nav nav-pills" id="myTab2" role="tablist"
     li.nav-item
       = link_to "Sign in", new_user_session_path, class: "nav-link top-line-button #{ yield :sign_in }"
