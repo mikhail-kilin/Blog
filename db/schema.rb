@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200309173157) do
+ActiveRecord::Schema.define(version: 20200310094404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,21 @@ ActiveRecord::Schema.define(version: 20200309173157) do
     t.index ["content"], name: "index_articles_on_content"
     t.index ["status"], name: "index_articles_on_status"
     t.index ["title"], name: "index_articles_on_title"
+  end
+
+  create_table "redactor2_assets", force: :cascade do |t|
+    t.string "data_file_name", null: false
+    t.string "data_content_type"
+    t.integer "data_file_size"
+    t.integer "assetable_id"
+    t.string "assetable_type", limit: 30
+    t.string "type", limit: 30
+    t.integer "width"
+    t.integer "height"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assetable_type", "assetable_id"], name: "idx_redactor2_assetable"
+    t.index ["assetable_type", "type", "assetable_id"], name: "idx_redactor2_assetable_type"
   end
 
   create_table "users", force: :cascade do |t|

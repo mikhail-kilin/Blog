@@ -1,4 +1,7 @@
 = simple_form_for article do |f|
-  = f.input :title
-  = f.input :content
-  = f.button :submit
+  .form-inputs
+    = f.input :title
+    = f.input :content, input_html: { class: :redactor }
+
+  .form-actions
+    = f.button :submit
