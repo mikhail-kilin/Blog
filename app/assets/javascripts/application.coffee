@@ -8,7 +8,7 @@
 #= require foundation
 #= require current_user
 #= require redactor2_rails
-#= require redactor
+#= require redactor.min
 #= require_tree ../templates
 #= require_tree .
 
