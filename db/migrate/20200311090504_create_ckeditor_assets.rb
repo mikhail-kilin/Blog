@@ -7,8 +7,6 @@ class CreateCkeditorAssets < ActiveRecord::Migration[5.1]
       t.string  :data_content_type
       t.integer :data_file_size
       t.string  :type, limit: 30
-      t.integer :width
-      t.integer :height
 
       t.timestamps null: false
     end

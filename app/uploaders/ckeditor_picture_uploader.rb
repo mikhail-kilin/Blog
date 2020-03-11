@@ -7,6 +7,7 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
 
   def store_dir
     "uploads/ckeditor/pictures/#{model.id}"
+    puts "\n\n\n#{model.id}\n\n\n"
   end
 
   # Create different versions of your uploaded files:

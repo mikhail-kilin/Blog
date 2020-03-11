@@ -3,7 +3,7 @@
 = simple_form_for article do |f|
   .form-inputs
     = f.input :title
-    = f.cktext_area :content
+    = f.input :content, as: :ckeditor, input_html: { ckeditor: { toolbar: 'Full' } }
 
   .form-actions
     = f.button :submit, 'Submit'
