@@ -16,7 +16,7 @@ gem "uglifier", ">= 2.7.2"
 
 # redactor
 gem "carrierwave"
-gem 'ckeditor', github: 'galetahub/ckeditor'
+gem "ckeditor", github: "galetahub/ckeditor"
 gem "mini_magick"
 
 source "https://rails-assets.org" do

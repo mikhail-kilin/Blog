@@ -12,4 +12,8 @@
   .error {
     @include form-error;
   }
+
+  .cke_editor_article_content {
+    margin-bottom: 0.5rem;;
+  }
 }
