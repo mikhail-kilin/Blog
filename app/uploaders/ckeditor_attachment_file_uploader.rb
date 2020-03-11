@@ -3,10 +3,14 @@ require "carrierwave"
 class CkeditorAttachmentFileUploader < CarrierWave::Uploader::Base
   include Ckeditor::Backend::CarrierWave
 
-  storage :file
+  storage :fog
 
   def store_dir
-    "uploads/ckeditor/attachments/#{model.id}"
+    "attachments/#{model.id}"
+  end
+
+  def cache_dir
+    "uploads/tmp/attachments-cache/"
   end
 
   def extension_white_list

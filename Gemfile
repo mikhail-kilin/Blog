@@ -19,6 +19,9 @@ gem "carrierwave"
 gem "ckeditor", github: "galetahub/ckeditor"
 gem "mini_magick"
 
+# amazon storage
+gem "fog-aws"
+
 source "https://rails-assets.org" do
   gem "rails-assets-jquery-ujs"
   gem "rails-assets-jquery2"
