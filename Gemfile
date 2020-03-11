@@ -14,6 +14,11 @@ gem "premailer-rails"
 gem "sass-rails", "~> 5.0.0", ">= 5.0.6"
 gem "uglifier", ">= 2.7.2"
 
+# redactor
+gem "carrierwave"
+gem 'ckeditor'
+gem "mini_magick"
+
 source "https://rails-assets.org" do
   gem "rails-assets-jquery-ujs"
   gem "rails-assets-jquery2"
