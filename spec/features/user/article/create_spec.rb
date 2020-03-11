@@ -3,18 +3,17 @@ require "rails_helper"
 feature "Create Article" do
   include_context "current user signed in"
 
+  let(:article_attrs) { attributes_for :article }
+
   background do
     visit new_article_path
   end
 
   scenario "Admin enters valid data" do
-    title = "title"
-    content = "content"
-
-    fill_form(:article, :new, title: title, content: content)
+    fill_form(:article, article_attrs)
     click_on "Submit"
 
-    expect(page).to have_content(title)
-    expect(page).to have_content(content)
+    expect(page).to have_content(article_attrs[:title])
+    expect(page).to have_content(article_attrs[:content])
   end
 end
