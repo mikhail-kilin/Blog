@@ -26,11 +26,6 @@ gem "meta-tags"
 gem "simple_form"
 gem "slim"
 
-# redactor
-gem "carrierwave"
-gem "mini_magick"
-gem "redactor2_rails"
-
 # all other gems
 gem "decent_decoration"
 gem "decent_exposure"

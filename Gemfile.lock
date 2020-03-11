@@ -83,13 +83,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    carrierwave (2.1.0)
-      activemodel (>= 5.0.0)
-      activesupport (>= 5.0.0)
-      addressable (~> 2.6)
-      image_processing (~> 1.1)
-      mimemagic (>= 0.3.0)
-      mini_mime (>= 0.1.3)
     choice (0.2.0)
     cliver (0.3.2)
     codeclimate-test-reporter (0.6.0)
@@ -186,9 +179,6 @@ GEM
     htmlentities (4.3.4)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
-    image_processing (1.10.3)
-      mini_magick (>= 4.9.5, < 5)
-      ruby-vips (>= 2.0.17, < 3)
     inky-rb (1.3.7.5)
       foundation_emails (~> 2)
       nokogiri
@@ -234,9 +224,6 @@ GEM
     mime-types (3.3)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.0904)
-    mimemagic (0.3.4)
-    mini_magick (4.10.1)
-    mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.12.2)
     multi_json (1.12.1)
@@ -317,10 +304,6 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
-    redactor2_rails (0.1.4)
-      devise
-      mime-types
-      orm_adapter
     request_store (1.3.2)
     responders (3.0.0)
       actionpack (>= 5.0)
@@ -362,8 +345,6 @@ GEM
       rubocop (>= 0.42.0)
     ruby-graphviz (1.2.2)
     ruby-progressbar (1.8.1)
-    ruby-vips (2.0.17)
-      ffi (~> 1.9)
     ruby_dep (1.5.0)
     safe_yaml (1.0.4)
     sass (3.4.25)
@@ -462,7 +443,6 @@ DEPENDENCIES
   bundler-audit
   byebug
   capybara
-  carrierwave
   codeclimate-test-reporter
   coffee-rails
   coffeelint
@@ -491,7 +471,6 @@ DEPENDENCIES
   letter_opener
   memory_profiler
   meta-tags
-  mini_magick
   newrelic_rpm
   pg
   poltergeist
@@ -504,7 +483,6 @@ DEPENDENCIES
   rails-assets-jquery-ujs!
   rails-assets-jquery2!
   rails-erd
-  redactor2_rails
   responders
   rollbar
   rspec-its
