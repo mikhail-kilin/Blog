@@ -3,4 +3,12 @@
 .content
   = sanitize @article.content
 .status Status: #{@article.status}
+- if @article_policy.edit?
+  .edit
+    = link_to "Edit", edit_article_path(@article)
+  .status
+    -if @article.status == "draft"
+      = link_to "Publicate", article_publicate_path(@article), method: :patch
+    -else
+      = link_to "Hide", article_hide_path(@article), method: :patch
 //Normal show view coming soon
