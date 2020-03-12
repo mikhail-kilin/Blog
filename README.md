@@ -20,6 +20,9 @@ It's based on Rails 5 and Ruby 2.5
 * [Devise](http://github.com/plataformatec/devise) for basic auth
 * [Rollbar](https://github.com/rollbar/rollbar-gem) for exception notification
 * [Google Analytics Rails](https://github.com/bgarret/google-analytics-rails) for Google Analytics support
+* [Ckeditor](https://github.com/galetahub/ckeditor) for redactor
+* [Carrierwave](https://github.com/carrierwaveuploader/carrierwave) for storage
+* [Mini Magick](https://github.com/minimagick/minimagick) for editing images
 
 ## Development Gems
 

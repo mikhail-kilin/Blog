@@ -12,4 +12,8 @@
   .error {
     @include form-error;
   }
+
+  .cke {
+    margin-bottom: .5rem;
+  }
 }
