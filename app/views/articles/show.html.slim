@@ -2,8 +2,8 @@
   = @article.title
 .content
   = sanitize @article.content
-.status Status: #{@article.status}
 - if @article_policy.edit?
+  .status Status: #{@article.status}
   .edit
     = link_to "Edit", edit_article_path(@article)
   .status
