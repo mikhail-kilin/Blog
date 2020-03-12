@@ -6,8 +6,8 @@ CarrierWave.configure do |config|
       aws_secret_access_key: ENV.fetch("AWS_SECRET_ACCESS_KEY_ID"),
       region:                ENV.fetch("AWS_REGION")
     }
+    config.fog_directory = ENV.fetch("AWS_BUCKET")
   end
-  config.fog_directory  = "rails-blog"
   config.fog_public     = false
   config.fog_attributes = { cache_control: "public, max-age=#{10.days.to_i}" }
 end
