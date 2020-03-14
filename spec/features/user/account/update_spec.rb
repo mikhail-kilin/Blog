@@ -9,6 +9,8 @@ feature "Update Account" do
 
   scenario "User updates account with valid data" do
     fill_form(:user, :edit, full_name: "New Name")
+    attach_file :user_avatar, Rails.root.join("app", "assets", "images", "avatar.jpg")
+
     click_on "Update"
 
     expect(page).to have_content("New Name")
@@ -16,6 +18,8 @@ feature "Update Account" do
 
   scenario "User enters not matched passwords" do
     fill_form(:user, :edit, password: "qwerty", password_confirmation: "123123")
+    attach_file :user_avatar, Rails.root.join("app", "assets", "images", "avatar.jpg")
+
     click_on "Update"
 
     expect(page).to have_content("doesn't match Password")

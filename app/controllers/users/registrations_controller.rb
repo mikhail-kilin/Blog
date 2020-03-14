@@ -9,6 +9,8 @@ module Users
     def account_update_params
       params = devise_parameter_sanitizer.sanitize(:account_update)
 
+      params.except(:avatar) if avatar_blank?(params)
+
       if passwords_blank?(params)
         params.except(:password, :password_confirmation)
       else
@@ -18,6 +20,10 @@ module Users
 
     def passwords_blank?(params)
       params[:password].blank? && params[:password_confirmation].blank?
+    end
+
+    def avatar_blank?(params)
+      params[:avatar].blank?
     end
   end
 end
