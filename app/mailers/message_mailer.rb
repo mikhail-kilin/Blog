@@ -3,9 +3,10 @@ class MessageMailer < ApplicationMailer
   layout "mailer"
 
   def send_message
-    @name = params["name"]
-    @message = params["content"]
-    @email = params["email"]
+    message = params[:message]
+    @name = message.name
+    @message = message.content
+    @email = message.email
 
     receiver = User.first
 
