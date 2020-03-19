@@ -3,7 +3,11 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit update]
 
   def index
-    @articles = Article.where(status: "published").order(created_at: :desc).page params[:page]
+    if user_signed_in?
+      @articles = Article.order(created_at: :desc).page params[:page]
+    else
+      @articles = Article.where(status: "published").order(created_at: :desc).page params[:page]
+    end
   end
 
   def show
