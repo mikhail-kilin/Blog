@@ -3,5 +3,5 @@ class Article < ApplicationRecord
   validates :content, presence: true
   validates :status, inclusion: { in: %w[draft published], message: "'%<value>s' is not a status`" }
 
-  paginates_per 10
+  paginates_per 8
 end
