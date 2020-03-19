@@ -1,0 +1,10 @@
+.row
+  .columns
+    h2 = title("Articles")
+.row
+  .medium-9.columns
+    - if @articles.empty?
+      h2 There are no artcles
+    - else
+      = render @articles
+      = paginate @articles

@@ -2,6 +2,10 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: %i[new edit create update]
   before_action :set_article, only: %i[show edit update]
 
+  def index
+    @articles = Article.where(status: "published").order(created_at: :desc).page params[:page]
+  end
+
   def show
   end
 
