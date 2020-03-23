@@ -6,7 +6,7 @@ feature "Publication of Article" do
   let(:article) { FactoryBot.create :article }
 
   scenario "Admin publicates article" do
-    visit article_path article
+    visit admin_scope_article_path article
     expect(page).to have_content("draft")
 
     click_on "Publicate"
@@ -16,7 +16,7 @@ feature "Publication of Article" do
 
   scenario "Admin hides article" do
     article.update status: :published
-    visit article_path article
+    visit admin_scope_article_path article
     expect(page).to have_content("published")
 
     click_on "Hide"

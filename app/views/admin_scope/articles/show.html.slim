@@ -1,0 +1,13 @@
+.title
+  = @article.title
+.content
+  = sanitize @article.content
+.status Status: #{@article.status}
+.edit
+  = link_to "Edit", edit_admin_scope_article_path(@article)
+.status-change
+  -if @article.status == "draft"
+    = link_to "Publicate", admin_scope_article_publicate_path(@article), method: :patch
+  -else
+    = link_to "Hide", admin_scope_article_hide_path(@article), method: :patch
+//Normal show view coming soon
