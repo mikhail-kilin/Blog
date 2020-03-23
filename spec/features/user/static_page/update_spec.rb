@@ -5,7 +5,7 @@ feature "Create Static Page" do
 
   background do
     static_page = FactoryBot.create :static_page
-    visit edit_static_page_path(static_page)
+    visit edit_admin_scope_static_page_path(static_page)
   end
 
   scenario "Admin enters valid data" do

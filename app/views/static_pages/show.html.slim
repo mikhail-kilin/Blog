@@ -3,10 +3,4 @@ h1.title
 .content
   = sanitize @static_page.content
 .buttons
-  - if @static_page_policy.edit?
-    .edit
-      = link_to "Edit", edit_static_page_path(@static_page)
-  - if @static_page_policy.destroy?
-    .destroy
-      = link_to "Remove", static_page_path(@static_page), method: :delete
 //Normal show view coming soon

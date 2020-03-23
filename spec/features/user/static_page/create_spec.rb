@@ -6,7 +6,7 @@ feature "Create Static Page" do
   let(:static_page_attrs) { attributes_for :static_page }
 
   background do
-    visit new_static_page_path
+    visit new_admin_scope_static_page_path
   end
 
   scenario "Admin enters valid data" do

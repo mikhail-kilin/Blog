@@ -5,7 +5,7 @@ feature "Destroy Static Page" do
 
   background do
     static_page = FactoryBot.create :static_page
-    visit static_page_path(static_page)
+    visit admin_scope_static_page_path(static_page)
   end
 
   scenario "Admin clicks to remove" do

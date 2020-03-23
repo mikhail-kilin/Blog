@@ -6,7 +6,7 @@ feature "Create Article" do
   let(:article_attrs) { attributes_for :article }
 
   background do
-    visit new_article_path
+    visit new_admin_scope_article_path
   end
 
   scenario "Admin enters valid data" do
