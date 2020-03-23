@@ -1,13 +1,11 @@
 class Message
-  attr_reader :name, :email, :content
+  attr_reader :params
 
   def initialize(params)
-    @name = params["name"]
-    @email = params["email"]
-    @content = params["content"]
+    @params = params
   end
 
   def valid?
-    name.present? && content.present? && email.present?
+    @params["name"].present? && @params["content"].present? && @params["email"].present?
   end
 end

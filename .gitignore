@@ -13,4 +13,3 @@ vendor/ruby
 .env
 .pryrc
 public/uploads
-sendgrid.env
