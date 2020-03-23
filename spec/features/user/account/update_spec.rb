@@ -9,7 +9,7 @@ feature "Update Account" do
 
   scenario "User updates account with valid data" do
     fill_form(:user, :edit, full_name: "New Name")
-    attach_file :user_avatar, Rails.root.join("app", "assets", "images", "avatar.jpg")
+    attach_file :user_avatar, Rails.root.join("spec", "fixtures", "images", "avatar.jpg")
 
     click_on "Update"
 
@@ -18,7 +18,7 @@ feature "Update Account" do
 
   scenario "User enters not matched passwords" do
     fill_form(:user, :edit, password: "qwerty", password_confirmation: "123123")
-    attach_file :user_avatar, Rails.root.join("app", "assets", "images", "avatar.jpg")
+    attach_file :user_avatar, Rails.root.join("spec", "fixtures", "images", "avatar.jpg")
 
     click_on "Update"
 
