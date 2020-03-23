@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe StaticPage, type: :model do
+RSpec.describe StaticPage do
   it { is_expected.to validate_presence_of :title }
 
   it { is_expected.to validate_presence_of :content }
