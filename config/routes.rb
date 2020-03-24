@@ -4,10 +4,8 @@ Rails.application.routes.draw do
   resources :articles, only: :show
 
   namespace :admin_scope do
-    resources :articles, except: :destroy do
-      patch "publicate"
-      patch "hide"
-    end
+    resources :articles, except: :destroy
+    patch "update/:id" => "article_statuses#update", as: "update_article_status"
   end
 
   devise_for :users, controllers: { registrations: "users/registrations" }

@@ -31,18 +31,6 @@ module AdminScope
       end
     end
 
-    def publicate
-      @article = Article.find(params[:article_id])
-      @article.update status: :published
-      redirect_to [:admin_scope, @article], notice: "Article was successfully published"
-    end
-
-    def hide
-      @article = Article.find(params[:article_id])
-      @article.update status: :draft
-      redirect_to [:admin_scope, @article], notice: "Article was successfully hidden"
-    end
-
     private
 
     def set_article
