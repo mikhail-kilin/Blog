@@ -1,0 +1,13 @@
+.row
+  .columns
+    h2 = title("Feedback")
+.row
+  .medium-9.columns
+    = simple_form_for :message, url: message_path do |f|
+      .form-inputs
+        = f.input :name
+        = f.input :email, as: :email
+        = f.input :content
+
+      .form-actions
+        = f.button :submit, 'Submit'

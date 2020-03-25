@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => "/ckeditor"
 
+  resource :message, only: %i[new create]
+
   resources :articles, only: %i[show index]
 
   namespace :admin_scope do
