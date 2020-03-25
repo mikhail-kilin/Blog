@@ -1,4 +1,3 @@
-require "byebug"
 class MessageMailer < ApplicationMailer
   layout "mailer"
 
