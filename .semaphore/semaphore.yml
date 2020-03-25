@@ -51,6 +51,9 @@ blocks:
 
   - name: Test
     task:
+      secrets:
+        - name: rails-blog-secret
+
       prologue:
         commands:
           - sem-version ruby 2.5.7
