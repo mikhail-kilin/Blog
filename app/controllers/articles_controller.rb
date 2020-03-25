@@ -5,6 +5,10 @@ class ArticlesController < ApplicationController
     authenticate_user! unless @article_policy.show?
   end
 
+  def index
+    @articles = Article.where(status: "published").order(created_at: :desc).page params[:page]
+  end
+
   private
 
   def set_article
