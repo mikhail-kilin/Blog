@@ -1,4 +1,13 @@
 class ArticlePolicy
+  def initialize(article, user)
+    @article = article
+    @user = user
+  end
+
+  def show?
+    manage? || @article.status == "published"
+  end
+
   def new?
     manage?
   end
@@ -16,6 +25,6 @@ class ArticlePolicy
   end
 
   def manage?
-    user_signed_in?
+    @user.present?
   end
 end

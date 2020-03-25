@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   namespace :admin_scope do
     resources :articles, except: :destroy
     resources :static_pages
+    resource :article_status, only: :update
   end
 
   devise_for :users, skip: [:registrations]
