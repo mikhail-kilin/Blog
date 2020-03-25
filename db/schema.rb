@@ -29,27 +29,16 @@ ActiveRecord::Schema.define(version: 20200314103032) do
     t.string "data_content_type"
     t.integer "data_file_size"
     t.string "type", limit: 30
-    t.integer "width"
-    t.integer "height"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.text "content"
-    t.integer "post_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-  end
-
-  create_table "posts", force: :cascade do |t|
+  create_table "static_pages", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
