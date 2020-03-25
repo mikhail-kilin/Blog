@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   namespace :admin_scope do
     resources :articles, except: :destroy
     resources :static_pages
-    patch "update/:id" => "article_statuses#update", as: "update_article_status"
+    resource :article_status, only: :update
   end
 
   devise_for :users, skip: [:registrations]
