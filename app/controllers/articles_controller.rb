@@ -1,6 +1,10 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: :show
 
+  def index
+    @articles = Article.where(status: "published").order(created_at: :desc).page params[:page]
+  end
+
   def show
   end
 
