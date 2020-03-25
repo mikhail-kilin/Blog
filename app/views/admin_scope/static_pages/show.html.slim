@@ -1,5 +1,6 @@
-h1.title
-  = @static_page.title
+.row
+  .columns
+    h2 = title("#{@static_page.title}")
 .content
   = sanitize @static_page.content
 .buttons
@@ -7,4 +8,3 @@ h1.title
     = link_to "Edit", edit_admin_scope_static_page_path(@static_page)
   .destroy
     = link_to "Remove", admin_scope_static_page_path(@static_page), method: :delete
-//Normal show view coming soon
