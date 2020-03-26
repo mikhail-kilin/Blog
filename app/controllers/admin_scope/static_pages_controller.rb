@@ -39,7 +39,6 @@ module AdminScope
 
     def set_static_page
       @static_page = StaticPage.find(params[:id])
-      @static_page_policy = StaticPagePolicy.new current_user
     end
 
     def static_page_params

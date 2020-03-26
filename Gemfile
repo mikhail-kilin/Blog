@@ -69,6 +69,7 @@ group :test do
   gem "poltergeist"
   gem "rspec-its"
   gem "shoulda-matchers"
+  gem "simplecov", require: false
   gem "terminal-notifier-guard"
   gem "webmock", require: false
 end

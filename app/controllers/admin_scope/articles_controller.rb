@@ -38,7 +38,7 @@ module AdminScope
 
     def set_article
       @article = Article.find(params[:id])
-      @article_policy = ArticlePolicy.new @article, current_user
+      @article_policy = ArticlePolicy.new current_user, @article
     end
 
     def article_params

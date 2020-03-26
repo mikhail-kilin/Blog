@@ -26,4 +26,9 @@ feature "As Visitor I want to leave feedback" do
     expect(page).to have_content "Feedback was successfully sent!"
     expect(ActionMailer::Base.deliveries.first.to.first).to eq User.first.email
   end
+
+  scenario "I enter empty data" do
+    click_on "Submit"
+    expect(page).to have_content "Invalid data!"
+  end
 end
