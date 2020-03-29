@@ -1,6 +1,6 @@
-h1.title
-  = @static_page.title
+.row
+  .columns
+    h2 = title("#{@static_page.title}")
 .content
   = sanitize @static_page.content
 .buttons
-//Normal show view coming soon

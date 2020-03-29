@@ -1,8 +1,10 @@
-.title
-  = @article.title
+.row
+  .columns
+    h2 = title("#{@article.title}")
 .content
   = sanitize @article.content
-.status Status: #{@article.status}
+em
+  .status Status: #{@article.status}
 .edit
   = link_to "Edit", edit_admin_scope_article_path(@article)
 .status-change
@@ -10,4 +12,3 @@
     = link_to "Publicate", admin_scope_article_status_path(id: @article, status: :published), method: :patch
   -else
     = link_to "Hide", admin_scope_article_status_path(id: @article, status: :draft), method: :patch
-//Normal show view coming soon

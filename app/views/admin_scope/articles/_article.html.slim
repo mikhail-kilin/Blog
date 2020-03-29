@@ -1,5 +1,6 @@
-.article-title
-  span
-    h5
-      = link_to article.title, article
+article
+  .article-title
+    span
+      h5
+        = link_to article.title, [:admin_scope, article]
 hr

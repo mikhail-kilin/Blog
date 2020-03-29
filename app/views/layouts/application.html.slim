@@ -20,8 +20,11 @@ html class="no-js" lang="en"
     = render "navigation"
     = render "messages"
 
-    main.container
-      = yield
+    main.container.row
+      .medium-9.columns
+        = yield
+      .medium-3.columns
+        = render "sidebar"
 
     = render "footer"
 

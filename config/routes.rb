@@ -20,5 +20,5 @@ Rails.application.routes.draw do
       as: :user_registration
   end
 
-  root to: "pages#home"
+  root to: "articles#index"
 end

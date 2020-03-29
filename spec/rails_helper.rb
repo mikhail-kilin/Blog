@@ -1,6 +1,14 @@
 ENV["RAILS_ENV"] ||= "test"
 
 require "spec_helper"
+
+require "simplecov"
+SimpleCov.start "rails" do
+  add_filter ".bundle/"
+  add_filter "app/models/ckeditor/*"
+  add_filter "app/uploaders/*"
+end
+
 require File.expand_path("../../config/environment", __FILE__)
 require "rspec/rails"
 require "shoulda/matchers"

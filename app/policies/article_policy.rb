@@ -1,11 +1,6 @@
-class ArticlePolicy
-  def initialize(article, user)
-    @article = article
-    @user = user
-  end
-
+class ArticlePolicy < ApplicationPolicy
   def show?
-    manage? || @article.status == "published"
+    manage? || @record.status == "published"
   end
 
   def new?
