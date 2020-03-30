@@ -1,12 +1,5 @@
 class StaticPagesController < ApplicationController
-  before_action :set_static_page, only: :show
+  expose :static_page
 
-  def show
-  end
-
-  private
-
-  def set_static_page
-    @static_page = StaticPage.find(params[:id])
-  end
+  def show; end
 end

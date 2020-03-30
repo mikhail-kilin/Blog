@@ -1,44 +1,33 @@
 module AdminScope
   class ArticlesController < BaseController
-    before_action :set_article, only: %i[show edit update]
+    expose :article
+    expose :article_policy, -> { set_article_policy }
+    expose :articles, -> { Article.sorted.page(params[:page]) }
 
-    def index
-      @articles = Article.order(created_at: :desc).page params[:page]
-    end
+    def index; end
 
-    def show
-    end
+    def show; end
 
-    def new
-      @article = Article.new
-    end
+    def new; end
 
-    def edit
-    end
+    def edit; end
 
     def create
-      @article = Article.new(article_params)
+      article.save
 
-      if @article.save
-        redirect_to [:admin_scope, @article], notice: "Article was successfully created."
-      else
-        render :new
-      end
+      respond_with article, location: admin_scope_article_path(article)
     end
 
     def update
-      if @article.update(article_params)
-        redirect_to [:admin_scope, @article], notice: "Article was successfully updated."
-      else
-        render :edit
-      end
+      article.update(article_params)
+
+      respond_with article
     end
 
     private
 
-    def set_article
-      @article = Article.find(params[:id])
-      @article_policy = ArticlePolicy.new current_user, @article
+    def set_article_policy
+      ArticlePolicy.new(current_user, article)
     end
 
     def article_params

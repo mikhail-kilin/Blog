@@ -1,14 +1,14 @@
 .row
   .columns
-    h2 = title("#{@article.title}")
+    h2 = title("#{article.title}")
 .content
-  = sanitize @article.content
+  = sanitize article.content
 em
-  .status Status: #{@article.status}
+  .status Status: #{article.status}
 .edit
-  = link_to "Edit", edit_admin_scope_article_path(@article)
+  = link_to "Edit", edit_admin_scope_article_path(article)
 .status-change
-  - if @article.status == "draft"
-    = link_to "Publicate", admin_scope_article_status_path(id: @article, status: :published), method: :patch
+  - if article.status == "draft"
+    = link_to "Publicate", admin_scope_article_status_path(id: article, status: :published), method: :patch
   - else
-    = link_to "Hide", admin_scope_article_status_path(id: @article, status: :draft), method: :patch
+    = link_to "Hide", admin_scope_article_status_path(id: article, status: :draft), method: :patch

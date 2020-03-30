@@ -2,8 +2,8 @@
   .columns
     h2 = title("Articles")
 .row
-  - if @articles.empty?
+  - if articles.empty?
     h2 There are no artcles
   - else
-    = render partial: 'article', :collection => @articles
-    = paginate @articles
+    = render partial: 'article', :collection => articles
+    = paginate articles
