@@ -1,5 +1,6 @@
 # Blog
 It's based on Rails 5 and Ruby 2.5
+This is a blog where the admin can post and publish articles, and the visitor can view the published articles.
 
 ## Application Gems
 
@@ -67,3 +68,8 @@ It's based on Rails 5 and Ruby 2.5
 * `bin/quality` - runs rubocop, brakeman, rails_best_practices and bundle-audit for the app
 * `bin/test` - runs all tests and quality checks
 * `bin/server` - to run server locally
+
+# Deployed:
+on heroku: https://rails-blog-task.herokuapp.com/
+admin`s login: 1kilinmv1@gmail.com
+admin`s password: 12345678
