@@ -1,18 +1,24 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: :show
+  expose_decorated :article
+  expose :articles
+  expose :article_policy, -> { set_article_policy }
 
   def show
     authenticate_user! unless @article_policy.show?
   end
 
   def index
-    @articles = Article.where(status: "published").order(created_at: :desc).page params[:page]
   end
 
   private
 
-  def set_article
-    @article = Article.find(params[:id])
-    @article_policy = ArticlePolicy.new current_user, @article
+  def set_article_policy
+    ArticlePolicy.new current_user, article
+  end
+
+  def articles
+    Article.published.sorted.page params[:page]
   end
 end
+
+
