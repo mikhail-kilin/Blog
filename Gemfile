@@ -3,20 +3,20 @@ source "https://rubygems.org"
 ruby "2.5.7"
 
 gem "pg"
-gem "rails", "5.1.6.2"
+gem "rails", "5.2.4.2"
 
 # assets
 gem "autoprefixer-rails"
 gem "coffee-rails"
 gem "foundation-icons-sass-rails"
-gem "foundation-rails"
+gem "foundation-rails", "~> 6.2.3.0"
 gem "premailer-rails"
 gem "sass-rails", "~> 5.0.0", ">= 5.0.6"
 gem "uglifier", ">= 2.7.2"
 
 # redactor
 gem "carrierwave"
-gem "ckeditor", github: "galetahub/ckeditor"
+gem "ckeditor"
 gem "mini_magick"
 
 # amazon storage
@@ -69,7 +69,7 @@ group :test do
   gem "poltergeist"
   gem "rspec-its"
   gem "shoulda-matchers"
-  gem "simplecov", require: false
+  gem "simplecov", "0.13.0", require: false
   gem "terminal-notifier-guard"
   gem "webmock", require: false
 end
@@ -84,13 +84,14 @@ group :development, :test do
   gem "dotenv-rails"
   gem "factory_bot_rails"
   gem "faker"
-  gem "jasmine", "> 2.0"
+  gem "jasmine", "2.5.2"
+  gem "jasmine-core", "2.5.2"
   gem "jasmine-jquery-rails"
   gem "rspec-rails", "~> 3.5"
-  gem "rubocop", require: false
+  gem "rubocop", "0.49.1", require: false
   gem "rubocop-rspec", require: false
   gem "scss_lint", require: false
-  gem "slim_lint", require: false
+  gem "slim_lint", "0.11.0", require: false
 end
 
 group :development do
