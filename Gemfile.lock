@@ -98,8 +98,8 @@ GEM
     ckeditor (5.1.0)
       orm_adapter (~> 0.5.0)
     cliver (0.3.2)
-    codeclimate-test-reporter (1.0.9)
-      simplecov (<= 0.13)
+    codeclimate-test-reporter (0.6.0)
+      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.2)
     coffee-rails (5.0.0)
       coffee-script (>= 2.2.0)
@@ -487,7 +487,7 @@ DEPENDENCIES
   capybara
   carrierwave
   ckeditor
-  codeclimate-test-reporter
+  codeclimate-test-reporter (= 0.6.0)
   coffee-rails
   coffeelint
   database_cleaner
