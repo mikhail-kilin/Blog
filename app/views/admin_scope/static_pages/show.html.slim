@@ -1,10 +1,10 @@
 .row
   .columns
-    h2 = title("#{@static_page.title}")
+    h2 = title("#{static_page.title}")
 .content
-  = sanitize @static_page.content
+  = sanitize static_page.content
 .buttons
   .edit
-    = link_to "Edit", edit_admin_scope_static_page_path(@static_page)
+    = link_to "Edit", edit_admin_scope_static_page_path(static_page)
   .destroy
-    = link_to "Remove", admin_scope_static_page_path(@static_page), method: :delete
+    = link_to "Remove", admin_scope_static_page_path(static_page), method: :delete

@@ -2,6 +2,6 @@ module AdminScope
   class BaseController < ApplicationController
     before_action :authenticate_user!
 
-    layout "admin"
+    # layout "admin"
   end
 end

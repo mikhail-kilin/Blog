@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   expose :static_page
 
-  def show; end
+  def show
+  end
 end

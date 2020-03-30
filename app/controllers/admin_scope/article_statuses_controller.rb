@@ -1,9 +1,11 @@
 module AdminScope
   class ArticleStatusesController < BaseController
+    expose :article
+
     def update
-      @article = Article.find(params[:id])
-      @article.update(article_params)
-      redirect_to [:admin_scope, @article], notice: "Article status is #{params[:status]}"
+      article = Article.find(params[:id])
+      article.update(article_params)
+      redirect_to [:admin_scope, article], notice: "Article status is #{params[:status]}"
     end
 
     private

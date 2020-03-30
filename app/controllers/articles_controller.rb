@@ -1,10 +1,10 @@
 class ArticlesController < ApplicationController
-  expose_decorated :article
+  expose :article
   expose :articles
   expose :article_policy, -> { set_article_policy }
 
   def show
-    authenticate_user! unless @article_policy.show?
+    authenticate_user! unless article_policy.show?
   end
 
   def index
@@ -20,5 +20,3 @@ class ArticlesController < ApplicationController
     Article.published.sorted.page params[:page]
   end
 end
-
-

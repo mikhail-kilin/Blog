@@ -1,45 +1,34 @@
 module AdminScope
   class StaticPagesController < BaseController
-    before_action :set_static_page, only: %i[show edit update destroy]
+    expose :static_page
 
     def show
     end
 
     def new
-      @static_page = StaticPage.new
     end
 
     def edit
     end
 
     def create
-      @static_page = StaticPage.new(static_page_params)
+      static_page.save
 
-      if @static_page.save
-        redirect_to [:admin_scope, @static_page], notice: "Static page was successfully created."
-      else
-        render :new
-      end
+      respond_with static_page, location: admin_scope_static_page_path(static_page)
     end
 
     def update
-      if @static_page.update(static_page_params)
-        redirect_to [:admin_scope, @static_page], notice: "Static page was successfully updated."
-      else
-        render :edit
-      end
+      static_page.update(static_page_params)
+
+      respond_with static_page, location: admin_scope_static_page_path(static_page)
     end
 
     def destroy
-      @static_page.destroy
+      static_page.destroy
       redirect_to root_path, notice: "Static page successfully removed"
     end
 
     private
-
-    def set_static_page
-      @static_page = StaticPage.find(params[:id])
-    end
 
     def static_page_params
       params.require(:static_page).permit(:title, :content)

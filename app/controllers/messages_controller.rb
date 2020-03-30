@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    result = DeliverMessage.call( { message: message } )
+    result = DeliverMessage.call message: message
 
     if result.success?
       redirect_to root_path, notice: "Feedback was successfully sent!"
