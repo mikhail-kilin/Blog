@@ -4,7 +4,7 @@ module AdminScope
 
     def update
       article.update(article_params)
-      redirect_to admin_scope_articles_path, notice: "Article status is #{params[:status]}"
+      redirect_back fallback_location: admin_scope_articles_path, notice: "Article status is #{params[:status]}"
     end
 
     private

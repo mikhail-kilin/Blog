@@ -1,6 +1,15 @@
-article
-  .article-title
-    span
-      h5
-        = link_to article.title, article
-hr
+article.showed
+  .info
+    .article-title
+      span
+        h3
+          = link_to article.title, article
+        h5
+          small
+            = article.decorate.publication
+    hr
+    .article-content
+      = article.decorate.prev_content
+    hr
+    .read-more
+      = link_to "READ MORE", article,  class: :button
