@@ -1,8 +1,9 @@
 aside.sticky-container.callout
   figure.avatar
-    = image_tag(User.first.avatar.url)
     figcaption
       = User.first.full_name
+    = image_tag(User.first.avatar.url, class: :photo)
+
   nav.links
     h5 Links:
     ul

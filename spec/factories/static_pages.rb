@@ -1,6 +1,8 @@
 FactoryBot.define do
   factory :static_page do
-    title { Faker::Lorem.sentence }
+    sentence = Faker::Lorem.sentence
+    title { sentence }
     content { Faker::Lorem.paragraph }
+    slug { sentence.parameterize }
   end
 end

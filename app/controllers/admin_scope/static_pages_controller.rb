@@ -1,6 +1,6 @@
 module AdminScope
   class StaticPagesController < BaseController
-    expose :static_page
+    expose :static_page, find_by: :slug
 
     def show
     end
@@ -31,7 +31,7 @@ module AdminScope
     private
 
     def static_page_params
-      params.require(:static_page).permit(:title, :content)
+      params.require(:static_page).permit(:title, :content, :slug)
     end
   end
 end
