@@ -1,6 +1,10 @@
 module AdminScope
   class StaticPagesController < BaseController
     expose :static_page, find_by: :slug
+    expose :static_pages, -> { StaticPage.page(params[:page]) }
+
+    def index
+    end
 
     def show
     end
@@ -25,7 +29,7 @@ module AdminScope
 
     def destroy
       static_page.destroy
-      redirect_to root_path, notice: "Static page successfully removed"
+      redirect_to admin_scope_static_pages_path, notice: "Static page successfully removed"
     end
 
     private

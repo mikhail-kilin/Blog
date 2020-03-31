@@ -14,16 +14,14 @@ html class="no-js" lang="en"
 
     = javascript_tag "window.App = {}"
 
-    == analytics_init if GoogleAnalytics.valid_tracker?
-
   body
     = render "messages"
 
     main.container.row
+      .medium-3.columns
+        = render "admin_sidebar"
       .medium-9.columns
         = yield
-      .medium-3.columns
-        = render "sidebar"
 
     = render "footer"
 

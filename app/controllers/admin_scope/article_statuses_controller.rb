@@ -5,7 +5,7 @@ module AdminScope
     def update
       article = Article.find(params[:id])
       article.update(article_params)
-      redirect_to [:admin_scope, article], notice: "Article status is #{params[:status]}"
+      redirect_to admin_scope_articles_path, notice: "Article status is #{params[:status]}"
     end
 
     private
