@@ -1,7 +1,7 @@
 module AdminScope
   class StaticPagesController < BaseController
     expose :static_page, find_by: :slug
-    expose :static_pages, -> { StaticPage.page(params[:page]) }
+    expose :static_pages, -> { fetch_static_pages }
 
     def index
     end
@@ -36,6 +36,10 @@ module AdminScope
 
     def static_page_params
       params.require(:static_page).permit(:title, :content, :slug)
+    end
+
+    def fetch_static_pages
+      StaticPage.page(params[:page])
     end
   end
 end

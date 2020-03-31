@@ -8,7 +8,6 @@
 #= require jquery-ujs
 #= require foundation
 #= require current_user
-#= ./slug/static_page_slug_generator
 #= require_tree ../templates
 #= require_tree .
 

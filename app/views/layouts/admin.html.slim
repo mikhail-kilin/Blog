@@ -10,7 +10,7 @@ html class="no-js" lang="en"
     = display_meta_tags site: "Blog", keywords: %w(title site)
     = csrf_meta_tags
 
-    = stylesheet_link_tag :application
+    = stylesheet_link_tag :admin
 
     = javascript_tag "window.App = {}"
 
@@ -28,4 +28,4 @@ html class="no-js" lang="en"
     javascript:
       App.currentUserData = #{{current_user.to_json}};
 
-    = javascript_include_tag :application
+    = javascript_include_tag :admin
