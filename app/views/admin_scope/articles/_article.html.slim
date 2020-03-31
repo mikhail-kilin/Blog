@@ -1,9 +1,16 @@
-article
-  .article-title
-    span
-      h5
-        = link_to article.title, [:admin_scope, article]
-
-hr
-
-"Published 2 days ago"
+tr
+  td
+    = link_to article.title, [:admin_scope, article]
+  td
+    = article.created_at
+  td
+    = article.updated_at
+  td
+    = article.status
+  td
+    = link_to "Edit", edit_admin_scope_article_path(article)
+  td
+    - if article.status == "draft"
+      = link_to "Publicate", admin_scope_article_status_path(id: article, status: :published), method: :patch
+    - else
+      = link_to "Hide", admin_scope_article_status_path(id: article, status: :draft), method: :patch

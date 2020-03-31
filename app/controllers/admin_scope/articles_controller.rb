@@ -4,13 +4,17 @@ module AdminScope
     expose :article_policy, -> { set_article_policy }
     expose :articles, -> { Article.sorted.page(params[:page]) }
 
-    def index; end
+    def index
+    end
 
-    def show; end
+    def show
+    end
 
-    def new; end
+    def new
+    end
 
-    def edit; end
+    def edit
+    end
 
     def create
       article.save
@@ -21,7 +25,7 @@ module AdminScope
     def update
       article.update(article_params)
 
-      respond_with article
+      respond_with article, location: admin_scope_article_path(article)
     end
 
     private

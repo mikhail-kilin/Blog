@@ -2,7 +2,7 @@ class DeliverMessage
   include Interactor
 
   def call
-    send_notification if context.message.valid? and return
+    send_notification and return if context.message.valid?
 
     context.fail!
   end
@@ -10,8 +10,6 @@ class DeliverMessage
   private
 
   def send_notification
-    MessageMailer.with(message: message).send_message.deliver
+    MessageMailer.with(message: context.message).send_message.deliver
   end
 end
-
-decorator + responders + interactor

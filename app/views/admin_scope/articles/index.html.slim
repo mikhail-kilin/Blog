@@ -5,7 +5,15 @@
   - if articles.empty?
     h2 There are no artcles
   - else
-    = render partial: 'article', :collection => articles
+    table
+      thead
+        tr
+          th Title
+          th Created at
+          th Updated at
+          th Status
+          th Edit
+          th Publication
+      tbody
+        = render partial: 'article', :collection => articles
     = paginate articles
-
-

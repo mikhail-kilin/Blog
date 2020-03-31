@@ -1,8 +1,9 @@
 aside.sticky-container.callout
   figure.avatar
-    = image_tag(User.first.avatar.url)
     figcaption
       = User.first.full_name
+    = image_tag(User.first.avatar.url, class: :photo)
+
   nav.links
     h5 Links:
     ul
@@ -14,17 +15,11 @@ aside.sticky-container.callout
             = link_to page.title, static_page_path(page)
       li
         = link_to "Contact me", new_message_path
-    - if user_signed_in?
-      h5 Admin links:
-      ul
-        section.articles
-          li
-            = link_to "Articles", admin_scope_articles_path
-          li
-            = link_to "New Article", new_admin_scope_article_path
-        section.static_pages
-          - StaticPage.all.each do |page|
-            li
-              = link_to page.title, admin_scope_static_page_path(page)
-          li
-            = link_to "New Static page", new_admin_scope_static_page_path
+      - if user_signed_in?
+        li
+          = link_to "Admin panel", admin_scope_articles_path
+        li
+          = link_to "Sign out", destroy_user_session_path
+      - else
+        li
+          = link_to "Sign in", new_user_session_path

@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
-  expose :static_page
+  expose :static_page, find_by: :slug
 
-  def show; end
+  def show
+  end
 end

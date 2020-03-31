@@ -1,0 +1,13 @@
+tr
+  td
+    = link_to static_page.title, [:admin_scope, static_page]
+  td
+    = static_page.created_at
+  td
+    = static_page.updated_at
+  td
+    = static_page.slug
+  td
+    = link_to "Edit", edit_admin_scope_static_page_path(static_page)
+  td
+    = link_to "Remove", admin_scope_static_page_path(static_page), method: :delete

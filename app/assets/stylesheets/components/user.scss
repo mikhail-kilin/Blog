@@ -1,7 +1,12 @@
 .avatar {
+  height: 290px;
   margin: 0;
 
   figcaption {
     text-align: center;
   }
+}
+
+.photo {
+  max-height: 265px;
 }
