@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  expose :article
+  expose_decorated :article
   expose :articles
   expose :article_policy, -> { set_article_policy }
 
