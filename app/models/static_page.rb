@@ -4,7 +4,7 @@ class StaticPage < ApplicationRecord
   validates :slug, presence: true
   validates :slug, uniqueness: true
 
-  paginates_per 8
+  paginates_per 5
 
   def to_param
     slug.to_s

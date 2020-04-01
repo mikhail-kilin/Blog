@@ -2,7 +2,7 @@ module AdminScope
   class ArticlesController < BaseController
     expose :article
     expose :article_policy, -> { set_article_policy }
-    expose :articles, -> { Article.sorted.page(params[:page]) }
+    expose :articles, -> { Article.sorted_by_create_time.page(params[:page]) }
 
     def index
     end

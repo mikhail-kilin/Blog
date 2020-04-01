@@ -1,8 +1,11 @@
-.row
-  .columns
-    h2 = title("#{article.title}")
-.content
-  = sanitize article.content
-.date
-  small
-    = article.publication
+article.showed
+  .info
+    .row
+      .columns
+        h2 = title("#{article.title}")
+    .content
+      = sanitize article.content
+    hr
+    .date
+      small
+        = article.publication

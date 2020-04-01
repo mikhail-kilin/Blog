@@ -1,4 +1,34 @@
+$white: #fff;
+$green: #7fc7af;
+$dark-gray: #5e5e5e;
+
 .date {
+  padding-bottom: 10px;
   font-style: italic;
   text-align: right;
+}
+
+.showed {
+  margin-bottom: 20px;
+  background-color: $white;
+}
+
+.info {
+  padding-top: 20px;
+  padding-right: 10%;
+  padding-left: 10%;
+
+  h3 {
+    a {
+      color: $dark-gray;
+    }
+
+    a:hover {
+      color: $green;
+    }
+  }
+
+  .read-more {
+    text-align: right;
+  }
 }
