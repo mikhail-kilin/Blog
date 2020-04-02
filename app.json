@@ -1,7 +1,7 @@
 {
-  "name": "rails-base",
+  "name": "rails-blog-task",
   "scripts": {
-    "postdeploy": "bundle exec rake db:schema:load db:seed:development"
+    "postdeploy": "bundle exec rake db:schema:load db:seed"
   },
   "env": {
     "HOST": { "required": true },
@@ -10,6 +10,10 @@
     "RACK_ENV": { "required": true },
     "RAILS_ENV": { "required": true },
     "RAILS_SERVE_STATIC_FILES": { "required": true },
+    "AWS_ACCESS_KEY_ID": { "required": true },
+	"AWS_SECRET_ACCESS_KEY_ID": { "required": true },
+	"AWS_REGION": { "required": true },
+	"AWS_BUCKET": { "required": true },
     "SECRET_KEY_BASE": { "generator": "secret" }
   },
   "addons": [
