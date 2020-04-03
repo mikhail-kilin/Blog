@@ -8,10 +8,11 @@ class SeedsHelper
   end
 
   def self.user!
-    User.create! full_name: "#{word.capitalize} #{word.capitalize}", email: "1kilinmv1@gmail.com", password: "12345678", confirmed_at: DateTime.now
+    User.create! full_name: "#{word.capitalize} #{word.capitalize}",
+                 email: "1kilinmv1@gmail.com",
+                 password: "12345678",
+                 confirmed_at: DateTime.current
   end
-
-  private
 
   def self.paragraph(size = 0)
     size = rand(10) + 2 if size.zero?
@@ -25,6 +26,6 @@ class SeedsHelper
 
   def self.word(size = 0)
     size = rand(6) + 2 if size.zero?
-    (0..size).map { ('a'..'z').to_a[rand(26)] }.join
+    (0..size).map { ("a".."z").to_a[rand(26)] }.join
   end
 end
