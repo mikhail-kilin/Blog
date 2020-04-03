@@ -1,3 +1,5 @@
-FactoryBot.create(:user, email: "user@example.com")
-FactoryBot.create_list :article, 20
-FactoryBot.create(:static_page, title: "About me", slug: "about-me")
+SeedsHelper::user!
+SeedsHelper::static_page!
+20.times do
+  SeedsHelper::article!
+end
