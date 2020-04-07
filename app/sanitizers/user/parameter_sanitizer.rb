@@ -6,6 +6,7 @@ class User
       password
       password_confirmation
       avatar
+      company_attributes: [ name slug ]
     ].freeze
 
     def initialize(*)

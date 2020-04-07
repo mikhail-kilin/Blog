@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_141234) do
   create_table "company_roles", force: :cascade do |t|
     t.integer "company_id"
     t.integer "user_id"
-    t.string "role"
+    t.string "role", default: "owner", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

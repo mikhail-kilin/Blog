@@ -1,5 +1,11 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
+    def create
+      super
+      result = CreateCompany.call params: company_params
+      flash[:notice] = "company not created, invalid name or slug" unless result.success?
+    end
+
     protected
 
     def update_resource(resource, params)
@@ -24,6 +30,10 @@ module Users
 
     def avatar_blank?(params)
       params[:avatar].blank?
+    end
+
+    def company_params
+      params.require(:user).require(:company).permit(:name, :slug)
     end
   end
 end
