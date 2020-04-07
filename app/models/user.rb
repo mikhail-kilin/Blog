@@ -5,4 +5,8 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   validates :full_name, presence: true
+
+  has_many :company_roles
+  has_many :companies, through: :company_roles
+  has_many :articles
 end

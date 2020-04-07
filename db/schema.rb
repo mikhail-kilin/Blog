@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_31_082250) do
+ActiveRecord::Schema.define(version: 2020_04_07_141234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2020_03_31_082250) do
     t.string "status", default: "draft", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "company_id"
     t.index ["status"], name: "index_articles_on_status"
   end
 
@@ -32,6 +34,23 @@ ActiveRecord::Schema.define(version: 2020_03_31_082250) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["type"], name: "index_ckeditor_assets_on_type"
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_companies_on_slug", unique: true
+  end
+
+  create_table "company_roles", force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "user_id"
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "static_pages", force: :cascade do |t|

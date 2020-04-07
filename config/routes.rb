@@ -12,13 +12,7 @@ Rails.application.routes.draw do
     resource :article_status, only: :update
   end
 
-  devise_for :users, skip: [:registrations]
-  devise_scope :user do
-    resource :users,
-      only: %i[edit update],
-      controller: "users/registrations",
-      as: :user_registration
-  end
+  devise_for :users, controllers: { registrations: "users/registrations" }
 
   root to: "articles#index"
 end

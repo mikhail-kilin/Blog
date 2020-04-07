@@ -3,6 +3,9 @@ class Article < ApplicationRecord
   validates :content, presence: true
   validates :status, inclusion: { in: %w[draft published], message: "'%<value>s' is not a status`" }
 
+  belongs_to :user
+  belongs_to :company
+
   paginates_per 5
 
   scope :published, -> { where(status: "published") }
