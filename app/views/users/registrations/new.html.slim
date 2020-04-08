@@ -14,7 +14,7 @@
         = f.input :password, required: true
         = f.input :password_confirmation, required: true
 
-      h4 Create Company if you need
+      h5 Create Company if you need
       = f.fields_for :company  do |company|
         = company.label :name
         = company.text_field :name
