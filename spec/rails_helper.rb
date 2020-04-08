@@ -8,6 +8,7 @@ SimpleCov.start "rails" do
   add_filter "app/models/ckeditor/*"
   add_filter "app/uploaders/*"
   add_filter "classes/seeds_helper"
+  add_filter "lib/*"
 end
 
 require File.expand_path("../../config/environment", __FILE__)

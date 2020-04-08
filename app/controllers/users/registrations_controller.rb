@@ -3,7 +3,7 @@ module Users
     def create
       super
       result = CreateCompany.call params: company_params
-      flash[:notice] = "company not created, invalid name or slug" unless result.success?
+      flash[:error] = "Company not created, invalid name or slug" unless result.success?
     end
 
     protected
