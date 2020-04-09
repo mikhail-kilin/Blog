@@ -2,6 +2,7 @@ module Users
   class RegistrationsController < Devise::RegistrationsController
     def create
       super
+      return if @user.new_record?
       result = CreateCompany.call params: company_params
       flash[:error] = "Company not created, invalid name or slug" unless result.success?
     end

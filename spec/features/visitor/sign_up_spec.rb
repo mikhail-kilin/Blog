@@ -46,4 +46,18 @@ feature "Sign Up" do
 
     expect(page).to have_content "Company not created, invalid name or slug"
   end
+
+  scenario "Company shouldn`t be created if user enters invalid data" do
+    visit new_user_registration_path
+
+    fill_form(:user, user_attributes)
+    fill_in :user_password_confirmation, with: "invalid password"
+
+    fill_in :user_company_name, with: company_attributes[:name]
+    fill_in :user_company_slug, with: company_attributes[:slug]
+    click_button "Sign up"
+
+    expect(page).to have_content "User could not be created."
+    expect(Company.first).to eq nil
+  end
 end
