@@ -1,9 +1,17 @@
 function static_page_replace() {
-    $('#static_page_slug').val(generate($('#static_page_title').val()));
+    replace('static_page_slug', 'static_page_title');
 }
 
 function reg_replace() {
-    $('#user_company_slug').val(generate($('#user_company_name').val()));
+    replace('user_company_slug', 'user_company_name');
+}
+
+function company_replace() {
+    replace('company_slug', 'company_name');
+}
+
+function replace(slug, name) {
+    $('#' + slug).val(generate($('#' + name).val()));
 }
 
 function generate(text) {

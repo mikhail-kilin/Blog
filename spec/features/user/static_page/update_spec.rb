@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "Create Static Page" do
+feature "Update Static Page" do
   include_context "current user signed in"
 
   background do

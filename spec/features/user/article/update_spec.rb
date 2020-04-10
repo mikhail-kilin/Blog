@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "Create Article" do
+feature "Update Article" do
   include_context "current user signed in"
 
   background do
