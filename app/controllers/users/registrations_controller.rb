@@ -4,7 +4,7 @@ module Users
       super
       return if @user.new_record?
       result = CreateCompany.call params: company_params
-      flash[:error] = "Company not created, invalid name or slug" unless result.success?
+      flash[:alert] = "Company not created, invalid name or slug" unless result.success?
     end
 
     protected

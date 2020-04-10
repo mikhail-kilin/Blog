@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   validates :full_name, presence: true
 
-  has_many :company_roles
-  has_many :companies, through: :company_roles
+  has_many :company_users
+  has_many :companies, through: :company_users
   has_many :articles
 end

@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_141234) do
     t.index ["slug"], name: "index_companies_on_slug", unique: true
   end
 
-  create_table "company_roles", force: :cascade do |t|
+  create_table "company_users", force: :cascade do |t|
     t.integer "company_id"
     t.integer "user_id"
     t.string "role", default: "owner", null: false

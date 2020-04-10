@@ -1,6 +1,6 @@
-class CreateCompanyRoles < ActiveRecord::Migration[5.2]
+class CreateCompanyUsers < ActiveRecord::Migration[5.2]
   def change
-    create_table :company_roles do |t|
+    create_table :company_users do |t|
       t.integer "company_id"
       t.integer "user_id"
       t.string "role", null: false, default: "owner"

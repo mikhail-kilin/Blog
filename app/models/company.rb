@@ -5,8 +5,8 @@ class Company < ApplicationRecord
 
   mount_uploader :image, CompanyAvatarUploader
 
-  has_many :company_roles
-  has_many :users, through: :company_roles
+  has_many :company_users
+  has_many :users, through: :company_users
   has_many :articles
 
   def to_param

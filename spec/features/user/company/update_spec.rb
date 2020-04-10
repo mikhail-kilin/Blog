@@ -5,6 +5,7 @@ feature "Update Company" do
 
   background do
     company = FactoryBot.create :company
+    CompanyUser.create company: company, user: User.first
     visit edit_admin_scope_company_path(company)
   end
 
