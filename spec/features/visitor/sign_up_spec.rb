@@ -13,7 +13,7 @@ feature "Sign Up" do
     choose :company_author
     fill_form(:user, user_attributes)
     click_button "Sign up"
-    save_page
+
     open_email(registered_user.email)
 
     expect(current_email).to have_subject("Confirmation instructions")
