@@ -7,6 +7,7 @@ module AdminScope
     end
 
     def new
+      redirect_to admin_scope_company_path current_user.own_company unless company_policy.new?
     end
 
     def edit
@@ -14,6 +15,7 @@ module AdminScope
     end
 
     def create
+      redirect_to admin_scope_company_path current_user.own_company and return unless company_policy.create?
       company.owner = current_user
       company.save
 
