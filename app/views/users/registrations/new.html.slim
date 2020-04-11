@@ -14,12 +14,23 @@
         = f.input :password, required: true
         = f.input :password_confirmation, required: true
 
-      h5 Create Company if you need
-      = f.fields_for :company  do |company|
-        = company.label :name, required: false
-        = company.text_field :name, oninput: 'reg_replace()'
-        = company.label :slug, required: false
-        = company.text_field :slug
+      .radio
+        .owner
+          = radio_button_tag "company", "owner", true, onclick: 'open_owner()'
+          = " I want to create new company"
+        .author
+          = radio_button_tag "company", "author", false, onclick: 'open_author()'
+          = " I want to be an author"
+
+      .company_form(id = "company_form")
+        h5 Create Company if you need
+        = simple_fields_for "user[own_company_attributes]" do |company|
+          = company.input :name, input_html: { oninput: 'reg_replace()' }
+          = company.input :slug
+
+      .author_form(id = "author_form", hidden = "hidden")
+        h5 Select Company
+        = f.input :companies, collection: Company.all, selected: 1, input_html: { disabled: :disabled}
 
       .form-actions
         = f.button :submit, "Sign up"

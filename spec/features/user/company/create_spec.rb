@@ -3,7 +3,7 @@ require "rails_helper"
 feature "Create Company" do
   include_context "current user signed in"
 
-  let(:company_attrs) { attributes_for :company }
+  let(:company_attrs) { attributes_for(:company).except(:owner) }
 
   background do
     visit new_admin_scope_company_path

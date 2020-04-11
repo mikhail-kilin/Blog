@@ -3,7 +3,7 @@ function static_page_replace() {
 }
 
 function reg_replace() {
-    replace('user_company_slug', 'user_company_name');
+    replace('user_own_company_attributes_slug', 'user_own_company_attributes_name');
 }
 
 function company_replace() {

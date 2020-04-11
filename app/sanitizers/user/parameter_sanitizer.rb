@@ -6,8 +6,7 @@ class User
       password
       password_confirmation
       avatar
-      company_attributes: [ name slug ]
-    ].freeze
+    ].push own_company_attributes: %i[name slug]
 
     def initialize(*)
       super

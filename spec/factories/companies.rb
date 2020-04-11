@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :company do
-    sentence = Faker::Lorem.sentence
-    name { sentence }
-    slug { sentence.parameterize }
+    name { Faker::Lorem.sentence }
+    slug { Faker::Lorem.sentence.parameterize }
+    owner { FactoryBot.create :user }
   end
 end

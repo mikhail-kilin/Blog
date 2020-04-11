@@ -8,6 +8,6 @@ class CompanyPolicy < ApplicationPolicy
   end
 
   def manage?
-    CompanyUser.find_by(company: @record, user: @user, role: :owner).present?
+    @record.owner == @user
   end
 end

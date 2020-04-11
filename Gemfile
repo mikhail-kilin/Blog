@@ -66,6 +66,7 @@ group :test do
   gem "formulaic"
   gem "guard-rspec"
   gem "launchy"
+  gem "phantomjs", require: "phantomjs/poltergeist"
   gem "poltergeist"
   gem "rspec-its"
   gem "shoulda-matchers"

@@ -40,17 +40,17 @@ ActiveRecord::Schema.define(version: 2020_04_07_141234) do
     t.string "name"
     t.string "image"
     t.string "slug"
+    t.integer "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_companies_on_slug", unique: true
   end
 
-  create_table "company_users", force: :cascade do |t|
+  create_table "companies_users", id: false, force: :cascade do |t|
     t.integer "company_id"
-    t.integer "user_id"
-    t.string "role", default: "owner", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "author_id"
+    t.index ["author_id"], name: "index_companies_users_on_author_id"
+    t.index ["company_id"], name: "index_companies_users_on_company_id"
   end
 
   create_table "static_pages", force: :cascade do |t|

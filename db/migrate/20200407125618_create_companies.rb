@@ -4,6 +4,7 @@ class CreateCompanies < ActiveRecord::Migration[5.2]
       t.string "name"
       t.string "image"
       t.string "slug"
+      t.integer "owner_id"
 
       t.timestamps
     end

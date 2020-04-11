@@ -14,7 +14,8 @@ module AdminScope
     end
 
     def create
-      CompanyUser.create user: current_user, company: company if company.save
+      company.owner = current_user
+      company.save
 
       respond_with company, location: admin_scope_company_path(company)
     end

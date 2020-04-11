@@ -2,9 +2,8 @@ module Users
   class RegistrationsController < Devise::RegistrationsController
     def create
       super
-      return if @user.new_record?
-      result = CreateCompany.call params: company_params
-      flash[:alert] = "Company not created, invalid name or slug" unless result.success?
+      id = params[:user][:companies]
+      @user.companies.push Company.find id if id.present?
     end
 
     protected

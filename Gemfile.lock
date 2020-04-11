@@ -520,6 +520,7 @@ DEPENDENCIES
   mini_magick
   newrelic_rpm
   pg
+  phantomjs
   poltergeist
   premailer-rails
   puma
