@@ -1,5 +1,4 @@
 require "rails_helper"
-require "phantomjs"
 
 feature "Sign Up" do
   let(:user_attributes) { attributes_for(:user).slice(:full_name, :email, :password, :password_confirmation) }

@@ -66,12 +66,12 @@ group :test do
   gem "formulaic"
   gem "guard-rspec"
   gem "launchy"
-  gem "phantomjs", require: "phantomjs/poltergeist"
   gem "poltergeist"
   gem "rspec-its"
   gem "shoulda-matchers"
   gem "simplecov", "0.13.0", require: false
   gem "terminal-notifier-guard"
+  gem "webdrivers", "~> 4.0"
   gem "webmock", require: false
 end
 
