@@ -3,8 +3,8 @@ module SeedsHelper
     StaticPage.create! title: "About me", slug: "about-me", content: paragraph
   end
 
-  def self.article!
-    Article.create! title: sentence, content: paragraph, status: :published
+  def self.article!(company, user)
+    Article.create! title: sentence, content: paragraph, status: :published, user: user, company: company
   end
 
   def self.user!
@@ -12,6 +12,10 @@ module SeedsHelper
                  email: "1kilinmv1@gmail.com",
                  password: "12345678",
                  confirmed_at: DateTime.current
+  end
+
+  def self.company!(user)
+    Company.create! name: sentence, slug: sentence, owner: user
   end
 
   def self.paragraph(size = 0)
