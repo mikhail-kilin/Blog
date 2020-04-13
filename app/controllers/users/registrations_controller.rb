@@ -1,11 +1,5 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
-    def create
-      super
-      id = params[:user][:companies]
-      @user.companies.push Company.find id if id.present?
-    end
-
     protected
 
     def update_resource(resource, params)

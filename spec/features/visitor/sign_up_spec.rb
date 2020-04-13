@@ -6,11 +6,12 @@ feature "Sign Up" do
   let(:company_attributes) { attributes_for :company }
 
   scenario "Visitor signs up as author", js: true do
-    FactoryBot.create :company
+    company = FactoryBot.create :company
     visit new_user_registration_path
 
     choose :company_author
     fill_form(:user, user_attributes)
+    select company.name, from: :user_company_ids
     click_button "Sign up"
 
     open_email(registered_user.email)
@@ -21,7 +22,7 @@ feature "Sign Up" do
     visit_in_email("Confirm my account")
 
     expect(page).to have_content("Your email address has been successfully confirmed")
-    expect(Company.first.authors.first.full_name).to eq user_attributes[:full_name]
+    expect(company.authors.first.full_name).to eq user_attributes[:full_name]
   end
 
   scenario "Visitor signs up and creates company with valid data" do

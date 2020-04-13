@@ -18,7 +18,7 @@ module AdminScope
     def create
       static_page.save
 
-      respond_with static_page, location: admin_scope_static_page_path(static_page)
+      respond_with :admin_scope, static_page
     end
 
     def update

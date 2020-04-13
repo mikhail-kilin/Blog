@@ -10,5 +10,5 @@ class User < ApplicationRecord
   has_one :own_company, class_name: "Company", foreign_key: "owner_id", inverse_of: :owner
   has_many :articles
 
-  accepts_nested_attributes_for :own_company
+  accepts_nested_attributes_for :own_company, :companies
 end

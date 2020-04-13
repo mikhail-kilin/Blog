@@ -9,7 +9,7 @@ class Company < ApplicationRecord
   has_and_belongs_to_many :authors, association_foreign_key: "author_id", class_name: "User", inverse_of: :companies
   has_many :articles
 
-  accepts_nested_attributes_for :owner
+  accepts_nested_attributes_for :owner, :authors
 
   def to_param
     slug.to_s

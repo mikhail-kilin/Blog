@@ -17,9 +17,10 @@ module AdminScope
     end
 
     def create
+      article.user = current_user
       article.save
 
-      respond_with article, location: admin_scope_article_path(article)
+      respond_with :admin_scope, article
     end
 
     def update
@@ -35,7 +36,7 @@ module AdminScope
     end
 
     def article_params
-      params.require(:article).permit(:title, :content, :status)
+      params.require(:article).permit(:title, :content, :status, :company_id)
     end
   end
 end

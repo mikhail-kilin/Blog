@@ -2,8 +2,8 @@ require "rails_helper"
 
 feature "Publication of Article" do
   include_context "current user signed in"
-
-  let(:article) { FactoryBot.create :article }
+  let!(:company) { FactoryBot.create :company, owner: User.first }
+  let(:article) { FactoryBot.create :article, :company, user: User.first, company: company }
 
   scenario "Admin publicates article" do
     visit admin_scope_article_path article

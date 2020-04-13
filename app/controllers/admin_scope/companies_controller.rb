@@ -19,7 +19,7 @@ module AdminScope
       company.owner = current_user
       company.save
 
-      respond_with company, location: admin_scope_company_path(company)
+      respond_with :admin_scope, company
     end
 
     def update
