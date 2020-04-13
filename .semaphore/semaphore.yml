@@ -46,6 +46,7 @@ blocks:
       jobs:
         - name: Quality
           commands:
+            - sem-version ruby 2.5.7
             - bundle install ${BUNDLE_ARGS} --local
             - bin/quality
 
