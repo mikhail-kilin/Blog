@@ -47,6 +47,7 @@ blocks:
         - name: Quality
           commands:
             - sem-version ruby 2.5.7
+            - gem install bundle
             - bundle install ${BUNDLE_ARGS} --local
             - bin/quality
 
@@ -58,6 +59,7 @@ blocks:
       prologue:
         commands:
           - sem-version ruby 2.5.7
+          - gem install bundle
           - bundle install ${BUNDLE_ARGS} --local
           - sem-service start postgres
           - bin/rails db:setup
