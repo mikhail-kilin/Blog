@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :static_pages, only: :show
 
   namespace :admin_scope do
-    resources :articles, except: :destroy
+    resources :articles
     resources :static_pages
     resources :companies, except: %i[index destroy]
     resource :article_status, only: :update

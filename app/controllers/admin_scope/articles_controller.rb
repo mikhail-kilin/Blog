@@ -29,6 +29,11 @@ module AdminScope
       respond_with article, location: admin_scope_article_path(article)
     end
 
+    def destroy
+      article.destroy
+      redirect_to admin_scope_articles_path, notice: "Article successfully removed"
+    end
+
     private
 
     def set_article_policy

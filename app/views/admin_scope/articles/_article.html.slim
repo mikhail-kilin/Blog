@@ -14,3 +14,9 @@ tr
       = link_to "Publicate", admin_scope_article_status_path(id: article, status: :published), method: :patch
     - else
       = link_to "Hide", admin_scope_article_status_path(id: article, status: :draft), method: :patch
+  td
+    = article.company.name
+  td
+    = article.user.full_name
+  td
+    = link_to "Remove", admin_scope_article_path(article), method: :delete
