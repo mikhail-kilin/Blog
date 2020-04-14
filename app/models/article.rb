@@ -5,6 +5,7 @@ class Article < ApplicationRecord
 
   belongs_to :user
   belongs_to :company
+  has_many :comments, dependent: :destroy
 
   paginates_per 5
 

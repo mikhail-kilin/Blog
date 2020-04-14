@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   expose :article_policy, -> { set_article_policy }
 
   def show
-    authenticate_user! unless article_policy.show?
+    redirect_to articles_path unless article_policy.show?
   end
 
   def index

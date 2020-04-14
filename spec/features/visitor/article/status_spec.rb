@@ -11,7 +11,7 @@ feature "Status of Article" do
 
   scenario "Admin publicates article" do
     visit article_path article
-    expect(page).to have_content("You need to sign in or sign up before continuing.")
+    expect(page).to have_content("Articles")
   end
 
   scenario "Admin hides article" do

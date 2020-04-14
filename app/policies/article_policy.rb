@@ -4,11 +4,11 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def new?
-    manage?
+    user.present?
   end
 
   def create?
-    manage?
+    user.present?
   end
 
   def edit?
@@ -19,7 +19,11 @@ class ArticlePolicy < ApplicationPolicy
     manage?
   end
 
+  def destroy?
+    manage?
+  end
+
   def manage?
-    @user.present?
+    @record.company.owner == @user || @record.user == @user
   end
 end
