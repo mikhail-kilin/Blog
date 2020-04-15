@@ -1,26 +1,24 @@
 class CommentsController < ApplicationController
+  before_action :check_policy
+
   expose :article, -> { set_article }
   expose :comment, build: ->(thing_params, scope) { comment_build thing_params, scope }
   expose :company_policy, -> { set_comment_policy }
 
   def create
-    redirect_to article_path(article) and return unless company_policy.create?
     comment.save
     respond_with comment, location: article_path(article)
   end
 
   def edit
-    redirect_to article_path(article) unless company_policy.edit?
   end
 
   def update
-    redirect_to article_path(article) and return unless company_policy.update?
     comment.update(comment_params)
     respond_with comment, location: article_path(article)
   end
 
   def destroy
-    redirect_to article_path(article) and return unless company_policy.destroy?
     article = comment.article
     comment.destroy
     redirect_to article_path article
@@ -45,5 +43,10 @@ class CommentsController < ApplicationController
     comment.article = article
     comment.user = current_user
     comment
+  end
+
+  def check_policy
+    action_name = params[:action]
+    redirect_to article_path(article) and return unless company_policy.send("#{action_name}?")
   end
 end

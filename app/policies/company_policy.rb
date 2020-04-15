@@ -1,4 +1,8 @@
 class CompanyPolicy < ApplicationPolicy
+  def show?
+    manage?
+  end
+
   def edit?
     manage?
   end
