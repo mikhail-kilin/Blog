@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   expose_decorated :article
   expose :articles
   expose :article_policy, -> { set_article_policy }
+  expose :comment, -> { set_comment }
 
   def show
     redirect_to articles_path unless article_policy.show?
@@ -18,5 +19,9 @@ class ArticlesController < ApplicationController
 
   def articles
     Article.published.sorted.page params[:page]
+  end
+
+  def set_comment
+    article.comments.new
   end
 end

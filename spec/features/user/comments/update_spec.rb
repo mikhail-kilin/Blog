@@ -10,7 +10,7 @@ feature "Update Comment" do
   end
 
   scenario "Admin has access" do
-    visit admin_scope_article_path(article)
+    visit article_path(article)
     within ".buttons" do
       click_on "Edit"
     end
@@ -25,13 +25,13 @@ feature "Update Comment" do
   scenario "Admin has not access" do
     user = FactoryBot.create :user
     login_as user
-    visit admin_scope_article_path(article)
+    visit article_path(article)
 
     expect(page).not_to have_content("Destroy")
   end
 
   scenario "Admin destroys comment" do
-    visit admin_scope_article_path(article)
+    visit article_path(article)
     click_on "Destroy"
 
     expect(page).not_to have_content("text")

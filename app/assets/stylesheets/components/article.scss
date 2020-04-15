@@ -3,14 +3,15 @@ $green: #7fc7af;
 $dark-gray: #5e5e5e;
 
 .date {
-  padding-bottom: 10px;
   font-style: italic;
   text-align: right;
 }
 
 .showed {
   margin-bottom: 20px;
+  padding-bottom: 10px;
   background-color: $white;
+  text-align: justify;
 }
 
 .info {

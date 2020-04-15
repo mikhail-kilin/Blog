@@ -3,7 +3,6 @@ module AdminScope
     expose :article
     expose :article_policy, -> { set_article_policy }
     expose :articles, -> { Article.sorted_by_create_time.page(params[:page]) }
-    expose :comment, -> { set_comment }
 
     def index
     end
@@ -49,10 +48,6 @@ module AdminScope
 
     def article_params
       params.require(:article).permit(:title, :content, :status, :company_id)
-    end
-
-    def set_comment
-      article.comments.new
     end
   end
 end

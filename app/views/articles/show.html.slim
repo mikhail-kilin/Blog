@@ -9,3 +9,11 @@ article.showed
     .date
       small
         = article.publication
+
+= render article.comments.sorted
+
+- if CommentPolicy.new(current_user, comment).new?
+  h4 Comment:
+  = render "comments/form"
+- else
+  h5 You should be an author in this company to comment article

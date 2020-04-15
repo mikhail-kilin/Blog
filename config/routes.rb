@@ -3,13 +3,13 @@ Rails.application.routes.draw do
 
   resource :message, only: %i[new create]
 
-  resources :articles, only: %i[show index]
+  resources :articles, only: %i[show index] do
+    resources :comments, except: %i[index new]
+  end
   resources :static_pages, only: :show
 
   namespace :admin_scope do
-    resources :articles do
-      resources :comments, except: %i[index new]
-    end
+    resources :articles
     resources :static_pages
     resources :companies, except: %i[index destroy]
     resource :article_status, only: :update

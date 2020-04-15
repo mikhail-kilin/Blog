@@ -1,0 +1,16 @@
+.showed
+    .info
+      b.name
+        = comment.user.full_name
+      .row
+        .medium-2.columns
+          = image_tag comment.user.avatar.url, class: "comment-photo"
+        .medium-10.columns
+          .comment_content
+            = comment.content
+      .buttons
+        - if CommentPolicy.new(current_user, comment).edit?
+          => link_to 'Edit', edit_article_comment_path(article, comment), class: "edit"
+        - if CommentPolicy.new(current_user, comment).destroy?
+          => link_to 'Destroy', article_comment_path(article, comment),
+          method: :delete, data: { confirm: 'Are you sure?' }

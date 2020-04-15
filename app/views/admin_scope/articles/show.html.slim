@@ -20,19 +20,3 @@ em
 -if article_policy.destroy?
   .destroy
     = link_to "Remove", admin_scope_article_path(article), method: :delete
-
-hr
-- article.comments.sorted.each do |comment|
-  .comment_content
-    = comment.content
-  .buttons
-    - if CommentPolicy.new(current_user, comment).edit?
-      => link_to 'Edit', edit_admin_scope_article_comment_path(article, comment), class: "edit"
-    - if CommentPolicy.new(current_user, comment).destroy?
-      => link_to 'Destroy', admin_scope_article_comment_path(article, comment),
-      method: :delete, data: { confirm: 'Are you sure?' }
-  hr
-
-- if CommentPolicy.new(current_user, comment).new?
-  h4 Comment:
-  = render "admin_scope/comments/form"

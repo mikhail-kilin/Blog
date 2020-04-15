@@ -6,7 +6,7 @@ feature "Create Comment" do
   let!(:article) { FactoryBot.create :article, :company, user: User.first, company: company }
 
   background do
-    visit admin_scope_article_path(article)
+    visit article_path(article)
   end
 
   scenario "Admin enters valid data" do
