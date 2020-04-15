@@ -9,10 +9,6 @@ aside.sticky-container.callout
     ul
       li
         = link_to "Articles", articles_path
-      section.static_pages
-        - StaticPage.all.each do |page|
-          li
-            = link_to page.title, static_page_path(page)
       li
         = link_to "Contact me", new_message_path
       hr

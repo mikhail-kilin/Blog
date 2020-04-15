@@ -11,4 +11,8 @@ class ArticleDecorator < ApplicationDecorator
     helper = ActionController::Base.helpers
     helper.truncate helper.strip_tags(content), length: 350
   end
+
+  def author
+    "by #{object.user.full_name}"
+  end
 end

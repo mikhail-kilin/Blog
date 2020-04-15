@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   resources :articles, only: %i[show index] do
     resources :comments, except: %i[index new]
   end
-  resources :static_pages, only: :show
+  # resources :static_pages, only: :show
 
   namespace :admin_scope do
     resources :articles
-    resources :static_pages
+    # resources :static_pages
     resources :companies, except: %i[index destroy]
     resource :article_status, only: :update
   end

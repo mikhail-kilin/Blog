@@ -8,7 +8,7 @@ article.showed
     hr
     .date
       small
-        = article.publication
+        = "#{article.publication} #{article.author}"
 
 = render article.comments.sorted
 
