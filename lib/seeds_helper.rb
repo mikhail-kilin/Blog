@@ -25,7 +25,7 @@ module SeedsHelper
 
   def self.sentence(size = 0)
     size = rand(2..10) if size.zero?
-    word.capitalize + (0..size).map { " #{word}" }.join + "."
+    (0..size).map { " #{word}" }.join
   end
 
   def self.word(size = 0)
