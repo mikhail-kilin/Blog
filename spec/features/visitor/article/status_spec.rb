@@ -11,7 +11,7 @@ feature "Status of Article" do
 
   scenario "Admin publicates article" do
     visit article_path article
-    expect(page).to have_content("Articles")
+    expect(page).to have_content("Companies")
   end
 
   scenario "Admin hides article" do

@@ -1,14 +1,10 @@
 class ArticlesController < ApplicationController
   expose_decorated :article
-  expose :articles
   expose :article_policy, -> { set_article_policy }
   expose :comment, -> { set_comment }
 
   def show
-    redirect_to articles_path unless article_policy.show?
-  end
-
-  def index
+    redirect_back fallback_location: companies_path unless article_policy.show?
   end
 
   private

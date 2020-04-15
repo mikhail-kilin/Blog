@@ -1,0 +1,6 @@
+.row
+  - if articles.empty?
+    h2 There are no artcles
+  - else
+    = render partial: 'articles/article', :collection => articles
+    = paginate articles

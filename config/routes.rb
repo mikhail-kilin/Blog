@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   resource :message, only: %i[new create]
 
-  resources :articles, only: %i[show index] do
+  resources :companies, only: %i[index show]
+
+  resources :articles, only: :show do
     resources :comments, except: %i[index new]
   end
   # resources :static_pages, only: :show
@@ -17,5 +19,5 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: "users/registrations" }
 
-  root to: "articles#index"
+  root to: "companies#index"
 end

@@ -8,7 +8,7 @@ feature "View Articles" do
   background do
     FactoryBot.create_list :article, 20, :published, :company, user: user, company: company
     FactoryBot.create :user
-    visit articles_path
+    visit company_path(company)
   end
 
   scenario "Visitor can see sorted paginated articles" do
