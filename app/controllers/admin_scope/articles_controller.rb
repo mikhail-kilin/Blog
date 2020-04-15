@@ -2,7 +2,7 @@ module AdminScope
   class ArticlesController < BaseController
     expose :article
     expose :article_policy, -> { set_article_policy }
-    expose :articles, -> { Article.sorted_by_create_time.page(params[:page]) }
+    expose :articles, -> { set_articles }
 
     def index
     end
@@ -48,6 +48,10 @@ module AdminScope
 
     def article_params
       params.require(:article).permit(:title, :content, :status, :company_id)
+    end
+
+    def set_articles
+      Article.editable(current_user).sorted_by_create_time.page(params[:page])
     end
   end
 end

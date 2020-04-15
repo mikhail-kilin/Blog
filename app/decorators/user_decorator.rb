@@ -8,4 +8,8 @@ class UserDecorator < ApplicationDecorator
   def all_companies
     object.companies.to_a.push object.own_company
   end
+
+  def avatar
+    object.avatar.url
+  end
 end

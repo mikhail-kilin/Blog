@@ -2,6 +2,9 @@ class ArticlesController < ApplicationController
   expose_decorated :article
   expose :article_policy, -> { set_article_policy }
   expose :comment, -> { set_comment }
+  expose :company, -> { article.company }
+
+  layout "company"
 
   def show
     redirect_back fallback_location: companies_path unless article_policy.show?

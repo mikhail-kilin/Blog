@@ -4,6 +4,8 @@ class CompaniesController < ApplicationController
   expose :company_policy, -> { set_company_policy }
   expose :articles, -> { set_articles }
 
+  layout "company", only: :show
+
   def index
   end
 

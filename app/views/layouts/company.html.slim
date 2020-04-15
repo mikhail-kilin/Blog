@@ -1,0 +1,33 @@
+doctype html
+
+html class="no-js" lang="en"
+
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    meta name="robots" content="NOODP,NOYDIR"
+
+    = display_meta_tags site: "Blog", keywords: %w(title site)
+    = csrf_meta_tags
+
+    = stylesheet_link_tag :application
+
+    = javascript_tag "window.App = {}"
+
+    == analytics_init if GoogleAnalytics.valid_tracker?
+
+  body
+    = render "messages"
+
+    main.container.row
+      .medium-9.columns
+        = yield
+      .medium-2.columns
+        = render "company_sidebar"
+
+    = render "footer"
+
+    javascript:
+      App.currentUserData = #{{current_user.to_json}};
+
+    = javascript_include_tag :application
