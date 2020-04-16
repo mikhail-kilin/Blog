@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => "/ckeditor"
 
-  resource :message, only: %i[new create]
-
   resources :companies, only: %i[index show]
 
   resources :articles, only: :show do
