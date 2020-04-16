@@ -15,7 +15,7 @@ module SeedsHelper
   end
 
   def self.company!(user)
-    Company.create! name: sentence, slug: sentence, owner: user
+    Company.create! name: sentence, slug: sentence.parameterize, owner: user
   end
 
   def self.paragraph(size = 0)
