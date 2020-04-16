@@ -12,6 +12,12 @@ aside.sticky-container.callout
           = link_to "Articles", admin_scope_articles_path
         li
           = link_to "New Article", new_admin_scope_article_path
+      section.company
+        li
+          - if current_user.own_company
+            = link_to "My company", [:admin_scope, current_user.own_company]
+          - else
+            = link_to "Create company", new_admin_scope_company_path
       section.visitor
         li
           = link_to "Visitor panel", companies_path
