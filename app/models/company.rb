@@ -2,6 +2,8 @@ class Company < ApplicationRecord
   validates :name, presence: true
   validates :slug, presence: true
   validates :slug, uniqueness: true
+  validates :slug, format: { with: /\A[a-zA-Zа-яА-Я\-]+\z/,
+                             message: "only allows letters and -" }
 
   mount_uploader :image, CompanyAvatarUploader
 
