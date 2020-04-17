@@ -225,6 +225,8 @@ GEM
       rake
     jasmine-core (2.5.2)
     jasmine-jquery-rails (2.0.3)
+    jbuilder (2.10.0)
+      activesupport (>= 5.0.0)
     json (2.3.0)
     kaminari (1.2.0)
       activesupport (>= 4.1.0)
@@ -521,6 +523,7 @@ DEPENDENCIES
   jasmine (= 2.5.2)
   jasmine-core (= 2.5.2)
   jasmine-jquery-rails
+  jbuilder
   kaminari
   launchy
   letter_opener
