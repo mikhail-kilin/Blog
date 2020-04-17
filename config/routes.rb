@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :articles
     resources :companies, except: %i[index destroy]
     resource :article_status, only: :update
+    resources :company_registrations, only: :update
   end
 
   devise_for :users, controllers: { registrations: "users/registrations" }
