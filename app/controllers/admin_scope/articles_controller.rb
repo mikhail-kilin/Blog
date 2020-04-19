@@ -2,7 +2,7 @@ module AdminScope
   class ArticlesController < BaseController
     before_action :check_policy, except: :index
 
-    expose :article
+    expose_decorated :article
     expose :article_policy, -> { set_article_policy }
     expose :articles, -> { set_articles }
 
@@ -10,6 +10,13 @@ module AdminScope
     end
 
     def show
+      respond_to do |format|
+        format.html
+        format.pdf do
+          render pdf: "Article | #{article.title}",
+                 page_size: "A4"
+        end
+      end
     end
 
     def new

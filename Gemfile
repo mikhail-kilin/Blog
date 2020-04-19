@@ -35,6 +35,10 @@ gem "meta-tags"
 gem "simple_form"
 gem "slim"
 
+# generate pdf
+gem "wicked_pdf"
+gem "wkhtmltopdf-binary"
+
 # all other gems
 gem "decent_decoration"
 gem "decent_exposure"

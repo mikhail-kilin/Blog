@@ -6,6 +6,8 @@
 em
   .status Status: #{article.status}
 
+= link_to "Download pdf", admin_scope_article_path(article, format: :pdf), class: :button
+
 -if article_policy.edit?
   .edit
     = link_to "Edit", edit_admin_scope_article_path(article)
