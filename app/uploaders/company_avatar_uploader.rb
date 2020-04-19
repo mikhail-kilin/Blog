@@ -12,7 +12,7 @@ class CompanyAvatarUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    ActionController::Base.helpers.asset_path("company.jpeg")
+    ActionController::Base.helpers.asset_path("company.jpg")
   end
 
   def extension_whitelist
