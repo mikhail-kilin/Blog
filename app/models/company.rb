@@ -10,6 +10,7 @@ class Company < ApplicationRecord
   belongs_to :owner, foreign_key: "owner_id", class_name: "User", inverse_of: :own_company
   has_and_belongs_to_many :authors, association_foreign_key: "author_id", class_name: "User", inverse_of: :companies
   has_many :articles
+  has_many :comments, through: :articles
 
   paginates_per 5
 

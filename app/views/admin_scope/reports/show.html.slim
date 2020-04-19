@@ -1,0 +1,23 @@
+.row
+  .columns
+    h2 = title("Reports")
+.row
+  - if authors.empty?
+    h2 There are no authors in your company
+  - else
+    .row
+      .medium-3.columns
+        = form_for :search, url: search_admin_scope_reports_path, method: :get, remote: true do |f|
+          = f.label "Articles:"
+          = f.select :articles, [["All", "all"], ["Has at list one", "present"], ["Has not any articles", "empty"]]
+          = f.label "Comments:"
+          = f.select :comments, [["All", "all"], ["Has at list one", "present"], ["Has not any comments", "empty"]]
+          = f.submit "Search"
+    table
+      thead
+        tr
+          th Full name
+          th Count of Articles
+          th Count of Comments
+      tbody(id="authors")
+        = render partial: 'author', :collection => authors
