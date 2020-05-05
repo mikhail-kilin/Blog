@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  apipie
   mount Ckeditor::Engine => "/ckeditor"
 
   resources :companies, only: %i[index show]

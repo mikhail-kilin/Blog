@@ -59,6 +59,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    apipie-rails (0.5.17)
+      rails (>= 4.1)
     arel (9.0.0)
     ast (2.4.0)
     autoprefixer-rails (9.7.6)
@@ -492,6 +494,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_link_to
+  apipie-rails
   autoprefixer-rails
   awesome_print
   brakeman
