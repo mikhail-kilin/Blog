@@ -1,8 +1,8 @@
 aside.sticky-container.callout
   figure.avatar
     figcaption
-      = User.first.full_name
-    = image_tag(User.first.avatar.url, class: :photo)
+      = current_user.full_name
+    = image_tag(current_user.avatar, class: :photo)
 
   nav.links
     h5 Admin links:
@@ -12,14 +12,17 @@ aside.sticky-container.callout
           = link_to "Articles", admin_scope_articles_path
         li
           = link_to "New Article", new_admin_scope_article_path
-      section.static_pages
-        li
-          = link_to "Static pages", admin_scope_static_pages_path
-        li
-          = link_to "New Static page", new_admin_scope_static_page_path
+      section.company
+        - if current_user.own_company
+          li
+            = link_to "My company", [:admin_scope, current_user.own_company]
+          li
+            = link_to "Reports", admin_scope_reports_path
+        - else
+            = link_to "Create company", new_admin_scope_company_path
       section.visitor
         li
-          = link_to "Visitor panel", articles_path
+          = link_to "Visitor panel", companies_path
       hr
       section.account
         li

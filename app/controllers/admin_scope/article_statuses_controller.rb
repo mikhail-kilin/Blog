@@ -1,6 +1,9 @@
 module AdminScope
   class ArticleStatusesController < BaseController
+    before_action :check_policy
+
     expose :article
+    expose :article_policy, -> { set_article_policy }
 
     def update
       article.update(article_params)
@@ -11,6 +14,15 @@ module AdminScope
 
     def article_params
       params.permit(:status)
+    end
+
+    def set_article_policy
+      ArticlePolicy.new(current_user, article)
+    end
+
+    def check_policy
+      action_name = params[:action]
+      redirect_to admin_scope_articles_path and return unless article_policy.send("#{action_name}?")
     end
   end
 end

@@ -1,0 +1,6 @@
+= simple_form_for [article, comment] do |f|
+  .form-inputs
+    = f.input :content, input_html: { class: "comment-content-field" }
+
+  .form-actions
+    = f.button :submit, "Submit"

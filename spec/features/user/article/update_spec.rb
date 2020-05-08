@@ -1,10 +1,11 @@
 require "rails_helper"
 
-feature "Create Article" do
+feature "Update Article" do
   include_context "current user signed in"
+  let!(:company) { FactoryBot.create :company, owner: User.first }
 
   background do
-    article = FactoryBot.create :article
+    article = FactoryBot.create :article, :company, user: User.first, company: company
     visit edit_admin_scope_article_path(article)
   end
 

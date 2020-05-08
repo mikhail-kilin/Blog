@@ -1,0 +1,7 @@
+h2 = title("#{article.title}")
+.content
+    = sanitize article.content
+hr
+.date
+    small
+    = "Published #{article.author}"

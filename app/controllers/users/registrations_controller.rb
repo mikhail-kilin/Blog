@@ -25,5 +25,9 @@ module Users
     def avatar_blank?(params)
       params[:avatar].blank?
     end
+
+    def company_params
+      params.require(:user).require(:company).permit(:name, :slug)
+    end
   end
 end

@@ -1,0 +1,9 @@
+.row
+  .columns
+    h2 = title("Companies")
+.row
+  - if companies.empty?
+    h2 There are no companies
+  - else
+    = render partial: 'company', :collection => companies
+    = paginate companies

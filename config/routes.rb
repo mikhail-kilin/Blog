@@ -1,24 +1,40 @@
 Rails.application.routes.draw do
+  apipie
   mount Ckeditor::Engine => "/ckeditor"
 
-  resource :message, only: %i[new create]
+  resources :companies, only: %i[index show]
 
-  resources :articles, only: %i[show index]
-  resources :static_pages, only: :show
+  namespace :v1 do
+    defaults format: :json do
+      resources :companies, only: :authors do
+        get :authors, on: :member
+      end
+
+      resources :authors, only: :articles do
+        get :articles, on: :member
+      end
+
+      resources :articles, only: :comments do
+        get :comments, on: :member
+      end
+    end
+  end
+
+  resources :articles, only: :show do
+    resources :comments, except: %i[index new]
+  end
 
   namespace :admin_scope do
-    resources :articles, except: :destroy
-    resources :static_pages
+    resources :articles
+    resources :companies, except: %i[index destroy]
     resource :article_status, only: :update
+    resources :company_registrations, only: :update
+    resource :reports, only: :show do
+      get :search, on: :collection
+    end
   end
 
-  devise_for :users, skip: [:registrations]
-  devise_scope :user do
-    resource :users,
-      only: %i[edit update],
-      controller: "users/registrations",
-      as: :user_registration
-  end
+  devise_for :users, controllers: { registrations: "users/registrations" }
 
-  root to: "articles#index"
+  root to: "companies#index"
 end

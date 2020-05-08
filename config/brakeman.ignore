@@ -1,0 +1,106 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Dangerous Send",
+      "warning_code": 23,
+      "fingerprint": "1d4e9e78c8917f1ef3a04d4d29c20742fcf0ef4ba9892ea3dab4213965f52dca",
+      "check_name": "Send",
+      "message": "User controlled method execution",
+      "file": "app/controllers/admin_scope/companies_controller.rb",
+      "line": 44,
+      "link": "https://brakemanscanner.org/docs/warning_types/dangerous_send/",
+      "code": "company_policy.send(\"#{params[:action]}?\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "AdminScope::CompaniesController",
+        "method": "new_check_policy"
+      },
+      "user_input": "params[:action]",
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Dangerous Send",
+      "warning_code": 23,
+      "fingerprint": "52430c31e21a5a216e87dd14cee97ac82faf9f00eb82eb752ac1130f67f2c3c0",
+      "check_name": "Send",
+      "message": "User controlled method execution",
+      "file": "app/controllers/admin_scope/articles_controller.rb",
+      "line": 55,
+      "link": "https://brakemanscanner.org/docs/warning_types/dangerous_send/",
+      "code": "article_policy.send(\"#{params[:action]}?\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "AdminScope::ArticlesController",
+        "method": "check_policy"
+      },
+      "user_input": "params[:action]",
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Dangerous Send",
+      "warning_code": 23,
+      "fingerprint": "821b9c3da06646b4f534036a0b8602c1f94da3ed73ea9ac495233d8ae5818386",
+      "check_name": "Send",
+      "message": "User controlled method execution",
+      "file": "app/controllers/admin_scope/article_statuses_controller.rb",
+      "line": 25,
+      "link": "https://brakemanscanner.org/docs/warning_types/dangerous_send/",
+      "code": "article_policy.send(\"#{params[:action]}?\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "AdminScope::ArticleStatusesController",
+        "method": "check_policy"
+      },
+      "user_input": "params[:action]",
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Dangerous Send",
+      "warning_code": 23,
+      "fingerprint": "83007db4bad4f2820a369c443a46baa04f31db01622e00615b8cc6f7b18bb2dc",
+      "check_name": "Send",
+      "message": "User controlled method execution",
+      "file": "app/controllers/admin_scope/companies_controller.rb",
+      "line": 49,
+      "link": "https://brakemanscanner.org/docs/warning_types/dangerous_send/",
+      "code": "company_policy.send(\"#{params[:action]}?\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "AdminScope::CompaniesController",
+        "method": "edit_check_policy"
+      },
+      "user_input": "params[:action]",
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Dangerous Send",
+      "warning_code": 23,
+      "fingerprint": "e3c1cf14e6dbb623084e457daad9d14e0a01cfba5de1a87724df136a5686c0bf",
+      "check_name": "Send",
+      "message": "User controlled method execution",
+      "file": "app/controllers/comments_controller.rb",
+      "line": 50,
+      "link": "https://brakemanscanner.org/docs/warning_types/dangerous_send/",
+      "code": "company_policy.send(\"#{params[:action]}?\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "CommentsController",
+        "method": "check_policy"
+      },
+      "user_input": "params[:action]",
+      "confidence": "High",
+      "note": ""
+    }
+  ],
+  "updated": "2020-04-15 19:00:36 +0300",
+  "brakeman_version": "4.8.1"
+}

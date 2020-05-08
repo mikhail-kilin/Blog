@@ -1,0 +1,8 @@
+= simple_form_for [:admin_scope, company] do |f|
+  .form-inputs
+    = f.input :name, input_html: { oninput: 'company_replace()' }
+    = f.input :slug
+    = f.input :image, as: :file
+
+  .form-actions
+    = f.button :submit, 'Submit'

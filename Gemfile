@@ -30,11 +30,17 @@ end
 # views
 gem "active_link_to"
 gem "inky-rb", require: "inky"
+gem "jbuilder"
 gem "meta-tags"
 gem "simple_form"
 gem "slim"
 
+# generate pdf
+gem "wicked_pdf"
+gem "wkhtmltopdf-binary"
+
 # all other gems
+gem "apipie-rails"
 gem "decent_decoration"
 gem "decent_exposure"
 gem "devise"
@@ -71,6 +77,7 @@ group :test do
   gem "shoulda-matchers"
   gem "simplecov", "0.13.0", require: false
   gem "terminal-notifier-guard"
+  gem "webdrivers", "~> 4.0"
   gem "webmock", require: false
 end
 

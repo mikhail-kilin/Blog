@@ -11,4 +11,9 @@ FactoryBot.define do
   trait :published do
     status { "published" }
   end
+
+  trait :company do
+    company
+    user
+  end
 end

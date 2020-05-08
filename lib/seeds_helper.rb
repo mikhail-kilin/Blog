@@ -3,8 +3,8 @@ module SeedsHelper
     StaticPage.create! title: "About me", slug: "about-me", content: paragraph
   end
 
-  def self.article!
-    Article.create! title: sentence, content: paragraph, status: :published
+  def self.article!(company, user)
+    Article.create! title: sentence, content: paragraph, status: :published, user: user, company: company
   end
 
   def self.user!
@@ -14,6 +14,10 @@ module SeedsHelper
                  confirmed_at: DateTime.current
   end
 
+  def self.company!(user)
+    Company.create! name: sentence, slug: sentence.parameterize, owner: user
+  end
+
   def self.paragraph(size = 0)
     size = rand(6..12) if size.zero?
     (0..size).map { "#{sentence} " }.join
@@ -21,7 +25,7 @@ module SeedsHelper
 
   def self.sentence(size = 0)
     size = rand(2..10) if size.zero?
-    word.capitalize + (0..size).map { " #{word}" }.join + "."
+    (0..size).map { " #{word}" }.join
   end
 
   def self.word(size = 0)

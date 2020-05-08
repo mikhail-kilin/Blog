@@ -13,6 +13,7 @@ feature "Update Account" do
 
     click_on "Update"
 
+    visit edit_user_registration_path(current_user)
     expect(page).to have_content("New Name")
   end
 

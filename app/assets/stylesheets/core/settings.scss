@@ -46,7 +46,7 @@
 // ---------
 
 $global-font-size: 100%;
-$global-width: rem-calc(1000);
+$global-width: 80%;
 $global-lineheight: 1.5;
 $foundation-palette: (
   primary: #7fc7af,
@@ -143,7 +143,7 @@ $anchor-color: $primary-color;
 $anchor-color-hover: $secondary-color;
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
-$hr-width: $global-width;
+$hr-width: 100%;
 $hr-border: 1px solid $medium-gray;
 $hr-margin: rem-calc(20) auto;
 $list-lineheight: $paragraph-lineheight;

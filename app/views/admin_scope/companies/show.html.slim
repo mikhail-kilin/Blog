@@ -1,0 +1,11 @@
+article
+  .info
+    .row
+      .columns
+        figure.company-image
+          figcaption
+            h3 = title("#{company.name}")
+          = image_tag(company.image.url)
+        .buttons
+          h5
+            = link_to "Edit", edit_admin_scope_company_path(company)

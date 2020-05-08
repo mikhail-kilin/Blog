@@ -1,7 +1,9 @@
 require "rails_helper"
 
 feature "Status of Article" do
-  let(:article) { FactoryBot.create :article }
+  let!(:user) { FactoryBot.create :user }
+  let!(:company) { FactoryBot.create :company, owner: user }
+  let(:article) { FactoryBot.create :article, :company, user: user, company: company }
 
   background do
     FactoryBot.create :user
@@ -9,7 +11,7 @@ feature "Status of Article" do
 
   scenario "Admin publicates article" do
     visit article_path article
-    expect(page).to have_content("You need to sign in or sign up before continuing.")
+    expect(page).to have_content("Companies")
   end
 
   scenario "Admin hides article" do

@@ -1,13 +1,13 @@
 class ArticlesController < ApplicationController
   expose_decorated :article
-  expose :articles
   expose :article_policy, -> { set_article_policy }
+  expose :comment, -> { set_comment }
+  expose :company, -> { article.company }
+
+  layout "company"
 
   def show
-    authenticate_user! unless article_policy.show?
-  end
-
-  def index
+    redirect_back fallback_location: companies_path unless article_policy.show?
   end
 
   private
@@ -18,5 +18,9 @@ class ArticlesController < ApplicationController
 
   def articles
     Article.published.sorted.page params[:page]
+  end
+
+  def set_comment
+    article.comments.new
   end
 end

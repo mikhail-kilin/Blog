@@ -8,18 +8,29 @@
         as: resource_name,
         url: registration_path(resource_name) do |f|
 
-      legend
-        | Create your
-        '
-        strong Rails Base example site
-        '
-        | account
-
       .form-inputs
         = f.input :full_name, required: true, autofocus: true
         = f.input :email, required: true
         = f.input :password, required: true
         = f.input :password_confirmation, required: true
+
+      .radio
+        .owner
+          = radio_button_tag "company", "owner", true, onclick: 'open_owner()'
+          = " I want to create new company"
+        .author
+          = radio_button_tag "company", "author", false, onclick: 'open_author()'
+          = " I want to be an author"
+
+      .company_form(id = "company_form")
+        h5 Create Company if you need
+        = simple_fields_for "user[own_company_attributes]" do |company|
+          = company.input :name, input_html: { oninput: 'reg_replace()' }
+          = company.input :slug
+
+      .author_form(id = "author_form", hidden = "hidden")
+        h5 Select Company
+        = f.association :companies, collection: Company.all, input_html: { disabled: :disabled }
 
       .form-actions
         = f.button :submit, "Sign up"

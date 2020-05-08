@@ -1,0 +1,6 @@
+.row
+  .columns.center
+    h2 = title(company.name)
+    - if company_policy.become_to_author?
+      = link_to "I want to be an author", admin_scope_company_registration_path(company), method: :patch
+= render 'articles/index', articles: articles

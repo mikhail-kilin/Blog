@@ -18,8 +18,9 @@ html class="no-js" lang="en"
     = render "messages"
 
     main.container.row
-      .medium-3.columns
-        = render "admin_sidebar"
+      .medium-2.columns
+        .sidebar
+          = render "admin_sidebar"
       .medium-9.columns
         = yield
 

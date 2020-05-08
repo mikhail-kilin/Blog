@@ -1,5 +1,5 @@
-SeedsHelper::user!
-SeedsHelper::static_page!
+user = SeedsHelper::user!
+company = SeedsHelper::company! user
 20.times do
-  SeedsHelper::article!
+  SeedsHelper::article! company, user
 end

@@ -1,12 +1,14 @@
 require "rails_helper"
 
 feature "View Articles" do
-  let(:draft) { FactoryBot.create :article, :draft }
+  let!(:user) { FactoryBot.create :user }
+  let!(:company) { FactoryBot.create :company, owner: user }
+  let(:draft) { FactoryBot.create :article, :draft, :company, user: user, company: company }
 
   background do
-    FactoryBot.create_list :article, 20, :published
+    FactoryBot.create_list :article, 20, :published, :company, user: user, company: company
     FactoryBot.create :user
-    visit articles_path
+    visit company_path(company)
   end
 
   scenario "Visitor can see sorted paginated articles" do
