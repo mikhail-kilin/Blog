@@ -23,6 +23,26 @@
     {
       "warning_type": "Dangerous Send",
       "warning_code": 23,
+      "fingerprint": "2fff90b6b90ad112c71fc4d0bcd1fbc080459862979bbd30f57db096d658598c",
+      "check_name": "Send",
+      "message": "User controlled method execution",
+      "file": "app/controllers/application_controller.rb",
+      "line": 22,
+      "link": "https://brakemanscanner.org/docs/warning_types/dangerous_send/",
+      "code": "send((model_name + \"_policy\")).send(\"#{params[:action]}?\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ApplicationController",
+        "method": "check_policy"
+      },
+      "user_input": "params[:action]",
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Dangerous Send",
+      "warning_code": 23,
       "fingerprint": "52430c31e21a5a216e87dd14cee97ac82faf9f00eb82eb752ac1130f67f2c3c0",
       "check_name": "Send",
       "message": "User controlled method execution",
@@ -101,6 +121,6 @@
       "note": ""
     }
   ],
-  "updated": "2020-04-15 19:00:36 +0300",
+  "updated": "2020-05-19 18:50:16 +0300",
   "brakeman_version": "4.8.1"
 }

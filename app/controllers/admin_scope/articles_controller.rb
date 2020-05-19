@@ -1,6 +1,6 @@
 module AdminScope
   class ArticlesController < BaseController
-    before_action :check_policy, except: :index
+    before_action -> { check_policy("admin_scope_articles_path", nil) }, except: :index
 
     expose_decorated :article
     expose :article_policy, -> { set_article_policy }
@@ -55,11 +55,6 @@ module AdminScope
 
     def set_articles
       Article.editable(current_user).sorted_by_create_time.page(params[:page])
-    end
-
-    def check_policy
-      action_name = params[:action]
-      redirect_to admin_scope_articles_path and return unless article_policy.send("#{action_name}?")
     end
   end
 end

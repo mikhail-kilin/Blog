@@ -1,9 +1,9 @@
 class CommentsController < ApplicationController
-  before_action :check_policy
+  before_action -> { check_policy("article_path", "article") }
 
   expose :article, -> { set_article }
   expose :comment, build: ->(thing_params, scope) { comment_build thing_params, scope }
-  expose :company_policy, -> { set_comment_policy }
+  expose :comment_policy, -> { set_comment_policy }
 
   def create
     comment.save
@@ -43,10 +43,5 @@ class CommentsController < ApplicationController
     comment.article = article
     comment.user = current_user
     comment
-  end
-
-  def check_policy
-    action_name = params[:action]
-    redirect_to article_path(article) and return unless company_policy.send("#{action_name}?")
   end
 end
