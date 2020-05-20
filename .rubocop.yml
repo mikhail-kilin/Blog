@@ -11,6 +11,7 @@ AllCops:
     - db/**/*
     - vendor/**/*
     - tmp/**/*
+    - app/queries/report_query.rb
 
 Rails/HasAndBelongsToMany:
   Enabled: false
