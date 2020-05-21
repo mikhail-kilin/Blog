@@ -15,6 +15,7 @@ module V1
     param :id, :number, desc: "id of author (user)"
     returns array_of: :article, code: 200, desc: "All articles of this author"
     def articles
+      render json: user.articles
     end
   end
 end

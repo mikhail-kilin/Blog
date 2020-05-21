@@ -13,6 +13,7 @@ module V1
     param :id, :number, desc: "id of article"
     returns array_of: :comment, code: 200, desc: "All comments of this article"
     def comments
+      render json: article.comments
     end
   end
 end
