@@ -56,10 +56,5 @@ module AdminScope
     def set_articles
       Article.editable(current_user).sorted_by_create_time.page(params[:page])
     end
-
-    def check_policy
-      action_name = params[:action]
-      redirect_to admin_scope_articles_path and return unless article_policy.send("#{action_name}?")
-    end
   end
 end

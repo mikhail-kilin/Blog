@@ -24,6 +24,7 @@ module V1
     param :id, :number, desc: "id of company"
     returns array_of: :response, code: 200, desc: "Company owner and all authors(users) of this company"
     def authors
+      render json: company
     end
   end
 end

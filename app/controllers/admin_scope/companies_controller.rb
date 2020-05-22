@@ -1,7 +1,6 @@
 module AdminScope
   class CompaniesController < BaseController
-    before_action :new_check_policy, only: %i[new create]
-    before_action :edit_check_policy, only: %i[edit update]
+    before_action :check_policy, only: %i[edit update new create]
 
     expose :company, find_by: :slug
     expose :company_policy, -> { set_company_policy }
@@ -36,17 +35,6 @@ module AdminScope
 
     def company_params
       params.require(:company).permit(:name, :slug, :image)
-    end
-
-    def new_check_policy
-      action_name = params[:action]
-      own_company = current_user.own_company
-      redirect_to admin_scope_company_path own_company and return unless company_policy.send("#{action_name}?")
-    end
-
-    def edit_check_policy
-      action_name = params[:action]
-      redirect_to admin_scope_company_path company and return unless company_policy.send("#{action_name}?")
     end
   end
 end

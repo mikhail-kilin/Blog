@@ -38,7 +38,7 @@ blocks:
       jobs:
         - name: Bundle
           commands:
-          - gem install bundler -v 1.17.3 --conservative
+          - gem install bundler -v 2.1.4 --conservative
           - bundle install ${BUNDLE_ARGS}
           - cache store
 
@@ -47,7 +47,7 @@ blocks:
       jobs:
         - name: Quality
           commands:
-            - gem install bundler -v 1.17.3 --conservative
+            - gem install bundler -v 2.1.4 --conservative
             - bundle install ${BUNDLE_ARGS} --local
             - bin/quality
 
@@ -58,7 +58,7 @@ blocks:
 
       prologue:
         commands:
-          - gem install bundler -v 1.17.3 --conservative
+          - gem install bundler -v 2.1.4 --conservative
           - bundle install ${BUNDLE_ARGS} --local
           - sem-service start postgres
           - bin/rails db:setup

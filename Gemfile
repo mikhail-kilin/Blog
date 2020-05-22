@@ -40,6 +40,7 @@ gem "wicked_pdf"
 gem "wkhtmltopdf-binary"
 
 # all other gems
+gem "active_model_serializers", "~> 0.10.0"
 gem "apipie-rails"
 gem "decent_decoration"
 gem "decent_exposure"
