@@ -1,6 +1,6 @@
 module AdminScope
   class ArticlesController < BaseController
-    before_action -> { check_policy("admin_scope_articles_path", nil) }, except: :index
+    before_action :check_policy, except: :index
 
     expose_decorated :article
     expose :article_policy, -> { set_article_policy }

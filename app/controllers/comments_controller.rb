@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action -> { check_policy("article_path", "article") }
+  before_action :check_policy
 
   expose :article, -> { set_article }
   expose :comment, build: ->(thing_params, scope) { comment_build thing_params, scope }

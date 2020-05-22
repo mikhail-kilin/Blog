@@ -8,18 +8,12 @@ class ApplicationController < ActionController::Base
   responders :flash
   respond_to :html
 
-  def check_policy(path, arg)
+  def check_policy
     action_name = params[:action]
 
     policy = send(model_name + "_policy")
 
-    result_path = if arg
-      send(path, send(arg))
-    else
-      send path
-    end
-
-    redirect_to result_path and return unless policy.send("#{action_name}?")
+    redirect_to root_path and return unless policy.send("#{action_name}?")
   end
 
   def model_name

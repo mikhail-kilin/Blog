@@ -19,10 +19,5 @@ module AdminScope
     def set_article_policy
       ArticlePolicy.new(current_user, article)
     end
-
-    def check_policy
-      action_name = params[:action]
-      redirect_to admin_scope_articles_path and return unless article_policy.send("#{action_name}?")
-    end
   end
 end
