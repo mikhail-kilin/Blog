@@ -14,7 +14,7 @@ module AdminScope
     private
 
     def set_authors
-      ReportQuery.new(company, "all", "all").send
+      ReportQuery.new(company).send
     end
 
     def filter_authors
