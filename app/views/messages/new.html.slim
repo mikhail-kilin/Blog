@@ -1,0 +1,12 @@
+.row
+  .columns
+    h2 = title("Feedback")
+.row
+  .medium-6
+    = simple_form_for :message, url: company_message_path(company) do |f|
+      .form-inputs
+        = f.input :name
+        = f.input :email, as: :email
+        = f.input :content, as: :text
+      .form-actions
+        = f.button :submit, 'Submit'

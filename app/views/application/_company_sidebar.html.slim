@@ -5,3 +5,5 @@ aside.sticky-container.callout
     figcaption
       = company.name
     = image_tag(company.avatar)
+  nav.links
+    = link_to "Contact us", new_company_message_path(company)
