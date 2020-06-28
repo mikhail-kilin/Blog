@@ -6,7 +6,7 @@ feature "Create Article" do
   let(:article_attrs) { attributes_for :article }
 
   background do
-    create :company, owner: User.first
+    create :company, owner: current_user
     visit new_admin_scope_article_path
   end
 

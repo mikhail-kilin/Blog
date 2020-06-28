@@ -3,7 +3,7 @@ require "rails_helper"
 feature "Create Company" do
   include_context "current user signed in"
 
-  let(:company_attrs) { attributes_for(:company, owner: User.first).except :owner }
+  let(:company_attrs) { attributes_for(:company, owner: current_user).except :owner }
 
   scenario "Admin enters valid data" do
     visit new_admin_scope_company_path
@@ -14,7 +14,7 @@ feature "Create Company" do
   end
 
   scenario "Admin tryes to create second company" do
-    company = FactoryBot.create :company, owner: User.first
+    company = FactoryBot.create :company, owner: current_user
     visit new_admin_scope_company_path
     expect(page).to have_content(company.name)
   end
