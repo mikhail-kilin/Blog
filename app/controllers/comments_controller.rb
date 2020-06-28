@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
-  before_action :check_policy
+  before_action -> { authorize comment }
 
   expose :article, -> { set_article }
-  expose :comment, build: ->(thing_params, scope) { comment_build thing_params, scope }
+  expose :comment, build: ->(comment_params, scope) { comment_build comment_params, scope }
   expose :comment_policy, -> { set_comment_policy }
 
   def create

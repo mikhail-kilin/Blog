@@ -12,4 +12,9 @@ class User < ApplicationRecord
   has_many :comments
 
   accepts_nested_attributes_for :own_company, :companies
+
+  scope :with_comments, -> { where("comments_count > 0") }
+  scope :without_comments, -> { where(comments_count: 0) }
+  scope :with_articles, -> { where("articles_count > 0") }
+  scope :without_articles, -> { where(articles_count: 0) }
 end

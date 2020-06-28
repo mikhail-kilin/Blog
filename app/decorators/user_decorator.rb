@@ -6,7 +6,11 @@ class UserDecorator < ApplicationDecorator
   end
 
   def all_companies
-    object.companies.to_a.push object.own_company
+    if object.own_company
+      object.companies.to_a.push object.own_company
+    else
+      object.companies.to_a
+    end
   end
 
   def avatar

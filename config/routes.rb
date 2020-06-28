@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   apipie
   mount Ckeditor::Engine => "/ckeditor"
 
-  resources :companies, only: %i[index show]
+  resources :companies, only: %i[index show] do
+    resource :message, only: %i[new create]
+  end
 
   namespace :v1 do
     defaults format: :json do

@@ -8,9 +8,12 @@ article.showed
     hr
     .date
       small
-        = "#{article.publication} #{article.author}"
+        div
+          = "Published #{distance_of_time_in_words_to_now(article.updated_at)} ago"
+        div
+          = "#{article.author}"
 
-= render article.comments.sorted
+= render article.sorted_comments
 
 - if CommentPolicy.new(current_user, comment).new?
   h4 Comment:

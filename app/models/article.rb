@@ -9,6 +9,16 @@ class Article < ApplicationRecord
 
   paginates_per 5
 
+  after_create do
+    user.articles_count += 1
+    user.save
+  end
+
+  after_destroy do
+    user.articles_count -= 1
+    user.save
+  end
+
   scope :published, -> { where(status: "published") }
   scope :sorted, -> { order(updated_at: :desc) }
   scope :sorted_by_create_time, -> { order(created_at: :desc) }

@@ -3,7 +3,7 @@ require "rails_helper"
 feature "Reports" do
   include_context "current user signed in"
 
-  let!(:company) { FactoryBot.create :company, owner: User.first }
+  let!(:company) { FactoryBot.create :company, owner: current_user }
   let(:commentator) { FactoryBot.create :user }
   let(:author) { FactoryBot.create :user }
   let(:beginner) { FactoryBot.create :user }

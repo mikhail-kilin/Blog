@@ -1,8 +1,8 @@
 class CompaniesController < ApplicationController
-  expose :company, find_by: :slug
-  expose :companies, -> { set_companies }
+  expose_decorated :company, find_by: :slug
+  expose_decorated :companies, -> { set_companies }
   expose :company_policy, -> { set_company_policy }
-  expose :articles, -> { set_articles }
+  expose_decorated :articles, -> { set_articles }
 
   layout "company", only: :show
 

@@ -1,11 +1,5 @@
 class ArticleDecorator < ApplicationDecorator
-  include ActionView::Helpers::DateHelper
-
-  delegate :id, :content, :title, :status, :comments
-
-  def publication
-    "Published #{distance_of_time_in_words_to_now(object.updated_at)} ago"
-  end
+  delegate :id, :content, :title, :status, :comments, :updated_at
 
   def prev_content
     helper = ActionController::Base.helpers
@@ -13,6 +7,10 @@ class ArticleDecorator < ApplicationDecorator
   end
 
   def author
-    "by #{object.user.full_name}"
+    "by #{object.user.full_name} (#{object.user.email})"
+  end
+
+  def sorted_comments
+    object.comments.sorted
   end
 end

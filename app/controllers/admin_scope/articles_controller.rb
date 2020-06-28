@@ -1,6 +1,6 @@
 module AdminScope
   class ArticlesController < BaseController
-    before_action :check_policy, except: :index
+    before_action -> { authorize article }, except: :index
 
     expose_decorated :article
     expose :article_policy, -> { set_article_policy }

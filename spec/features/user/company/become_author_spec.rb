@@ -15,6 +15,6 @@ feature "Update Company" do
 
     expect(page).to have_content("Now you became an author")
     expect(page).not_to have_content("I want to be an author")
-    expect(company.authors.first).to eq current_user
+    expect(page).to have_content("Now you became an author")
   end
 end

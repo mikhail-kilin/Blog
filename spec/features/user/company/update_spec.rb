@@ -4,7 +4,7 @@ feature "Update Company" do
   include_context "current user signed in"
 
   background do
-    company = FactoryBot.create :company, owner: User.first
+    company = FactoryBot.create :company, owner: current_user
     visit edit_admin_scope_company_path(company)
   end
 

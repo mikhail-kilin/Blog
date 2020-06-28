@@ -1,24 +1,19 @@
 class ArticlesController < ApplicationController
-  expose_decorated :article
-  expose :article_policy, -> { set_article_policy }
+  expose_decorated :article, -> { set_article }
   expose :comment, -> { set_comment }
-  expose :company, -> { article.company }
+  expose_decorated :company, -> { article.company }
 
   layout "company"
 
   def show
-    redirect_back fallback_location: companies_path unless article_policy.show?
+    authorize article
+  end
+
+  def set_article
+    Article.includes(:comments).find_by(:params["id"])
   end
 
   private
-
-  def set_article_policy
-    ArticlePolicy.new current_user, article
-  end
-
-  def articles
-    Article.published.sorted.page params[:page]
-  end
 
   def set_comment
     article.comments.new

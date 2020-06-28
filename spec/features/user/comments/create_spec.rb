@@ -2,8 +2,8 @@ require "rails_helper"
 
 feature "Create Comment" do
   include_context "current user signed in"
-  let!(:company) { FactoryBot.create :company, owner: User.first }
-  let!(:article) { FactoryBot.create :article, :company, user: User.first, company: company }
+  let!(:company) { FactoryBot.create :company, owner: current_user }
+  let!(:article) { FactoryBot.create :article, :company, user: current_user, company: company }
 
   background do
     visit article_path(article)

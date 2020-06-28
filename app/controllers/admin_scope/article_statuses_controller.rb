@@ -1,6 +1,6 @@
 module AdminScope
   class ArticleStatusesController < BaseController
-    before_action :check_policy
+    before_action -> { authorize article }
 
     expose :article
     expose :article_policy, -> { set_article_policy }
