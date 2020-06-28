@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  expose_decorated :article
+  expose_decorated :article, -> { set_article }
   expose :comment, -> { set_comment }
   expose_decorated :company, -> { article.company }
 
@@ -9,11 +9,11 @@ class ArticlesController < ApplicationController
     authorize article
   end
 
-  private
-
-  def articles
-    Article.published.sorted.page params[:page]
+  def set_article
+    Article.includes(:comments).find_by(:params["id"])
   end
+
+  private
 
   def set_comment
     article.comments.new
