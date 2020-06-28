@@ -9,7 +9,7 @@ article.showed
             = "Published #{distance_of_time_in_words_to_now(article.updated_at)} ago"
     hr
     .article-content
-      = article.decorate.prev_content
+      = article.prev_content
     hr
     .read-more
       = link_to "READ MORE", article,  class: :button

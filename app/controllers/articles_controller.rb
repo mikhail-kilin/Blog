@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   expose_decorated :article
   expose :comment, -> { set_comment }
-  expose :company, -> { article.company }
+  expose_decorated :company, -> { article.company }
 
   layout "company"
 

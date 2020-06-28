@@ -2,7 +2,7 @@ module AdminScope
   class CompaniesController < BaseController
     before_action -> { authorize company }, only: %i[edit update new create]
 
-    expose :company, find_by: :slug
+    expose_decorated :company, find_by: :slug
     expose :company_policy, -> { set_company_policy }
 
     def show

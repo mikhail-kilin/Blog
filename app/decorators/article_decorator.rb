@@ -9,4 +9,8 @@ class ArticleDecorator < ApplicationDecorator
   def author
     "by #{object.user.full_name} (#{object.user.email})"
   end
+
+  def sorted_comments
+    object.comments.sorted
+  end
 end
