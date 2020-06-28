@@ -1,7 +1,7 @@
 module AdminScope
   class ReportsController < BaseController
     expose :company, -> { current_user.own_company }
-    expose :authors, -> { set_authors.sort }
+    expose :authors, -> { set_authors }
     expose :filtered_authors, -> { filter_authors }
 
     def show

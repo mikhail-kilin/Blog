@@ -3,13 +3,20 @@ module SeedsHelper
     StaticPage.create! title: "About me", slug: "about-me", content: paragraph
   end
 
+  def self.comment!(article, user)
+    Comment.create! article: article,
+                    user: user,
+                    content: paragraph
+  end
+
   def self.article!(company, user)
     Article.create! title: sentence, content: paragraph, status: :published, user: user, company: company
   end
 
-  def self.user!
+  def self.user!(email=nil)
+    email = "#{word(20)}@example.com" if email == nil
     User.create! full_name: "#{word.capitalize} #{word.capitalize}",
-                 email: "1kilinmv1@gmail.com",
+                 email: email,
                  password: "12345678",
                  confirmed_at: DateTime.current
   end
