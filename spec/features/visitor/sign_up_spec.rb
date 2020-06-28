@@ -22,7 +22,6 @@ feature "Sign Up" do
     visit_in_email("Confirm my account")
 
     expect(page).to have_content("Your email address has been successfully confirmed")
-    expect(company.authors.first.full_name).to eq user_attributes[:full_name]
   end
 
   scenario "Visitor signs up and creates company with valid data" do
@@ -33,8 +32,9 @@ feature "Sign Up" do
     fill_in :user_own_company_attributes_slug, with: company_attributes[:slug]
     click_button "Sign up"
 
-    expect(Company.first.name).to eq company_attributes[:name]
-    expect(Company.first.slug).to eq company_attributes[:slug]
+    visit admin_scope_company_path(company_attributes[:slug])
+
+    expect(page).to have_content(company_attributes[:name])
   end
 
   scenario "Visitor signs up and creates company with invalid data" do
@@ -61,6 +61,9 @@ feature "Sign Up" do
     click_button "Sign up"
 
     expect(page).to have_content "User could not be created."
-    expect(Company.first).to eq nil
+
+    visit companies_path
+
+    expect(page).not_to have_content(company_attributes[:name])
   end
 end
