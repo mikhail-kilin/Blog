@@ -13,8 +13,8 @@ module SeedsHelper
     Article.create! title: sentence, content: paragraph, status: :published, user: user, company: company
   end
 
-  def self.user!(email=nil)
-    email = "#{word(20)}@example.com" if email == nil
+  def self.user!(email = nil)
+    email = "#{word(20)}@example.com" if email.nil?
     User.create! full_name: "#{word.capitalize} #{word.capitalize}",
                  email: email,
                  password: "12345678",
