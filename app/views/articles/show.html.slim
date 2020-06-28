@@ -8,7 +8,10 @@ article.showed
     hr
     .date
       small
-        = "#{article.publication} #{article.author}"
+        div
+          = "Published #{distance_of_time_in_words_to_now(article.updated_at)} ago"
+        div
+          = "#{article.author}"
 
 = render article.comments.sorted
 
