@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
   end
 
   def set_article
-    Article.includes(:comments).find_by(:params["id"])
+    Article.includes(:comments).find_by(id: params["id"])
   end
 
   private
