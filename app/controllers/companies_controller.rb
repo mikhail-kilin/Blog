@@ -27,6 +27,10 @@ class CompaniesController < ApplicationController
   end
 
   def set_articles
-    company.articles.published.sorted.page params[:page]
+    articles = company.articles.published
+    if params[:search] && params[:search][:data].present?
+      articles = articles.search_by_data(params[:search][:data])
+    end
+    articles.sorted.page params[:page]
   end
 end
