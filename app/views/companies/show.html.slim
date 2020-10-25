@@ -6,5 +6,5 @@
     <br>
     = form_for :search, url: company_path(company), method: :get do |f|
       = f.text_field :data
-      = f.submit "Search"
+      = f.submit "Search", class: :button
 = render 'articles/index', articles: articles
