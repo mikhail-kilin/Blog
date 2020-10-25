@@ -59,6 +59,7 @@ gem "rack-mini-profiler", require: false, git: "https://github.com/MiniProfiler/
 gem "responders"
 gem "rollbar"
 gem "seedbank"
+gem "sidekiq"
 gem "stackprof"
 
 group :staging, :production do
