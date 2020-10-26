@@ -1,6 +1,5 @@
 class CommentsNotificationJob < ApplicationJob
-
-  def perform(*guests)
+  def perform(*_guests)
     User.with_articles.each do |user|
       send_message(user)
     end
@@ -11,13 +10,10 @@ class CommentsNotificationJob < ApplicationJob
 
   def send_message(user)
     count = count_of_new_comments(user)
-
-    if count > 0
-      CommentNotificationMailer.with(user: user, count: count).send_message.deliver
-    end
+    CommentNotificationMailer.with(user: user, count: count).send_message.deliver if count.positive?
   end
 
   def count_of_new_comments(user)
-    (user.articles.map {|a| a.comments.where("created_at > ?", 1.week.ago).count}).sum
+    (user.articles.map { |a| a.comments.where("created_at > ?", 1.week.ago).count }).sum
   end
 end
