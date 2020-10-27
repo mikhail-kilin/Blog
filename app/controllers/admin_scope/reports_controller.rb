@@ -14,13 +14,13 @@ module AdminScope
     private
 
     def set_authors
-      ReportQuery.new(company).send
+      FilterReportQuery.new(company).send
     end
 
     def filter_authors
       articles = params[:search][:articles]
       comments = params[:search][:comments]
-      ReportQuery.new(company, comments, articles).send
+      FilterReportQuery.new(company, comments, articles).send
     end
   end
 end
