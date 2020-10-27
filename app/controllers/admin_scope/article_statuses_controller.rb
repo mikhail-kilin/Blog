@@ -3,7 +3,6 @@ module AdminScope
     before_action -> { authorize article }
 
     expose :article
-    expose :article_policy, -> { set_article_policy }
 
     def update
       article.update(article_params)
@@ -14,10 +13,6 @@ module AdminScope
 
     def article_params
       params.permit(:status)
-    end
-
-    def set_article_policy
-      ArticlePolicy.new(current_user, article)
     end
   end
 end

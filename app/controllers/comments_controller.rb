@@ -3,7 +3,6 @@ class CommentsController < ApplicationController
 
   expose :article, -> { set_article }
   expose :comment, build: ->(comment_params, scope) { comment_build comment_params, scope }
-  expose :comment_policy, -> { set_comment_policy }
 
   def create
     comment.save
@@ -32,10 +31,6 @@ class CommentsController < ApplicationController
 
   def set_article
     Article.find(params[:article_id])
-  end
-
-  def set_comment_policy
-    CommentPolicy.new(current_user, comment)
   end
 
   def comment_build(thing_params, scope)

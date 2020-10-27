@@ -2,7 +2,7 @@ class CommentPolicy < ApplicationPolicy
   def new?
     company = @record.company
     user.present? &&
-      (company.owner == @user.user || company.authors.include?(@user.user))
+      (company.owner == @user || company.authors.include?(@user))
   end
 
   def create?

@@ -3,7 +3,6 @@ module AdminScope
     before_action -> { authorize company }, only: %i[edit update new create]
 
     expose_decorated :company, find_by: :slug
-    expose :company_policy, -> { set_company_policy }
 
     def show
     end
@@ -28,10 +27,6 @@ module AdminScope
     end
 
     private
-
-    def set_company_policy
-      CompanyPolicy.new(current_user, company)
-    end
 
     def company_params
       params.require(:company).permit(:name, :slug, :image)

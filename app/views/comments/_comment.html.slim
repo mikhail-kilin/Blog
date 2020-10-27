@@ -9,8 +9,8 @@
           .comment_content
             = comment.content
       .buttons
-        - if CommentPolicy.new(current_user, comment).edit?
+        - if policy(comment).edit?
           => link_to 'Edit', edit_article_comment_path(article, comment), class: "edit"
-        - if CommentPolicy.new(current_user, comment).destroy?
+        - if policy(comment).destroy?
           => link_to 'Destroy', article_comment_path(article, comment),
           method: :delete, data: { confirm: 'Are you sure?' }

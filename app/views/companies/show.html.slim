@@ -1,7 +1,7 @@
 .row
   .columns.center
     h2 = title(company.name)
-    - if company_policy.become_to_author?
+    - if policy(company).become_to_author?
       = link_to "I want to be an author", admin_scope_company_registration_path(company), method: :patch
     <br>
     = form_for :search, url: company_path(company), method: :get do |f|

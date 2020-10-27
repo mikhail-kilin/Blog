@@ -3,7 +3,6 @@ module AdminScope
     before_action -> { authorize article }, except: :index
 
     expose_decorated :article
-    expose :article_policy, -> { set_article_policy }
     expose :articles, -> { set_articles }
 
     def index
@@ -44,10 +43,6 @@ module AdminScope
     end
 
     private
-
-    def set_article_policy
-      ArticlePolicy.new(current_user, article)
-    end
 
     def article_params
       params.require(:article).permit(:title, :content, :status, :company_id)
