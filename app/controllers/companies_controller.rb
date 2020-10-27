@@ -23,11 +23,11 @@ class CompaniesController < ApplicationController
 
   def set_articles
     articles = company.articles.published
-    articles = articles.search_by_data(params[:search][:data]) if search?
+    articles = FilterArticlesQuery.new(articles, filter_params).send
     articles.sorted.page params[:page]
   end
 
-  def search?
-    params[:search] && params[:search][:data].present?
+  def filter_params
+    params.fetch(:search, {}).permit(:data)
   end
 end
