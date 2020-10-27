@@ -7,7 +7,6 @@ feature "View Articles" do
 
   background do
     FactoryBot.create_list :article, 20, :published, :company, user: user, company: company
-    FactoryBot.create :user
     visit company_path(company)
   end
 
