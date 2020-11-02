@@ -17,6 +17,8 @@ feature "View Articles" do
 
   context "we have 20 articles" do
     let!(:list_articles) { create_list :article, 20, :published, user: user, company: company }
+    let(:another_user) { create :user }
+    let!(:article_from_another_author) { create :article, :published, user: another_user, company: company }
 
     scenario "Visitor can see search articles by title" do
       article = list_articles.last
@@ -44,6 +46,14 @@ feature "View Articles" do
       click_on "Search"
 
       expect(page).to have_content(article.title)
+    end
+
+    scenario "Visitor can see search articles by author name" do
+      fill_in :search_data, with: another_user.full_name
+
+      click_on "Search"
+
+      expect(page).to have_content(article_from_another_author.title)
     end
   end
 end
