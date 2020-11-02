@@ -20,10 +20,10 @@ class CompanyPolicy < ApplicationPolicy
   end
 
   def become_to_author?
-    @user.present? && !@record.authors.include?(@user)
+    user.present? && !record.authors.include?(user)
   end
 
   def manage?
-    @record.owner == @user
+    record.owner == user
   end
 end

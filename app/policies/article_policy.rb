@@ -24,6 +24,6 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def manage?
-    @record.company.owner == @user || @record.user == @user
+    record.company.owner == user || record.user == user
   end
 end
