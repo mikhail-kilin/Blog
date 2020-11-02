@@ -14,7 +14,7 @@ class Company < ApplicationRecord
 
   paginates_per 5
 
-  scope :sorted, -> { order(updated_at: :desc) }
+  scope :sorted_by_updated_time, -> { order(updated_at: :desc) }
 
   accepts_nested_attributes_for :owner, :authors
 

@@ -6,7 +6,7 @@ class FilterArticlesQuery
     @params = params
   end
 
-  def send
+  def all
     @articles = articles.search_by_data(params[:data]) if search?
     articles
   end

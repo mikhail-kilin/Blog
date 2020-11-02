@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
   expose_decorated :company, find_by: :slug
   expose_decorated :companies, -> { set_companies }
-  expose_decorated :articles, -> { set_articles }
+  expose_decorated :articles, :sorted_articles
 
   layout "company", only: :show
 
@@ -18,13 +18,19 @@ class CompaniesController < ApplicationController
   end
 
   def set_companies
-    Company.sorted.page params[:page]
+    Company.sorted_by_updated_time.page params[:page]
   end
 
-  def set_articles
-    articles = company.articles.published
-    articles = FilterArticlesQuery.new(articles, filter_params).send
-    articles.sorted.page params[:page]
+  def sorted_articles
+    filtered_articles.sorted_by_update_time
+  end
+
+  def filtered_articles
+    FilterArticlesQuery.new(raw_relation, filter_params).all
+  end
+
+  def raw_relation
+    company.articles.published.page(params[:page]).per(10)
   end
 
   def filter_params
