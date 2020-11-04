@@ -19,33 +19,30 @@ feature "View Articles" do
     let!(:list_articles) { create_list :article, 20, :published, user: user, company: company }
     let(:another_user) { create :user }
     let!(:article_from_another_author) { create :article, :published, user: another_user, company: company }
+    let(:last_article) { list_articles.last }
 
     scenario "Visitor can see search articles by title" do
-      article = list_articles.last
+      expect(page).not_to have_content(last_article.title)
 
-      expect(page).not_to have_content(article.title)
-
-      first_title_word = article.title.split(" ").last
+      first_title_word = last_article.title.split(" ").last
 
       fill_in :search_data, with: first_title_word
 
       click_on "Search"
 
-      expect(page).to have_content(article.title)
+      expect(page).to have_content(last_article.title)
     end
 
     scenario "Visitor can see search articles by content" do
-      article = list_articles.last
+      expect(page).not_to have_content(last_article.title)
 
-      expect(page).not_to have_content(article.title)
-
-      first_content_word = article.content.split(" ").last
+      first_content_word = last_article.content.split(" ").last
 
       fill_in :search_data, with: first_content_word
 
       click_on "Search"
 
-      expect(page).to have_content(article.title)
+      expect(page).to have_content(last_article.title)
     end
 
     scenario "Visitor can see search articles by author name" do
