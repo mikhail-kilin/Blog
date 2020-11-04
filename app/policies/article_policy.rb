@@ -1,29 +1,17 @@
 class ArticlePolicy < ApplicationPolicy
   def show?
-    manage? || @record.status == "published"
-  end
-
-  def new?
-    user.present?
+    record.status == "published" || update?
   end
 
   def create?
     user.present?
   end
 
-  def edit?
-    manage?
-  end
-
   def update?
-    manage?
-  end
-
-  def destroy?
-    manage?
-  end
-
-  def manage?
     record.company.owner == user || record.user == user
   end
+
+  alias new? create?
+  alias edit? update?
+  alias destroy? update?
 end

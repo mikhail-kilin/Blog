@@ -15,7 +15,7 @@ feature "View Articles" do
     expect(page).to have_content(published_article.title)
   end
 
-  context "we have 20 articles" do
+  context "with created 20 articles" do
     let!(:list_articles) { create_list :article, 20, :published, user: user, company: company }
     let(:another_user) { create :user }
     let!(:article_from_another_author) { create :article, :published, user: another_user, company: company }
