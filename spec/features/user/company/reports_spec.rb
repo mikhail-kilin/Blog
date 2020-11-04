@@ -29,8 +29,8 @@ feature "Reports" do
   end
 
   scenario "Admin filters commentator", js: true do
-    select "Has not any articles", from: :search_articles
-    select "Has at list one", from: :search_comments
+    select "Has not any articles", from: :report_with_articles
+    select "Has at list one", from: :report_with_comments
     click_on "Search"
 
     expect(page).to have_content(commentator.full_name)
@@ -40,8 +40,8 @@ feature "Reports" do
   end
 
   scenario "Admin filters author", js: true do
-    select "Has at list one", from: :search_articles
-    select "Has not any comments", from: :search_comments
+    select "Has at list one", from: :report_with_articles
+    select "Has not any comments", from: :report_with_comments
     click_on "Search"
 
     expect(page).not_to have_content(commentator.full_name)
@@ -51,8 +51,8 @@ feature "Reports" do
   end
 
   scenario "Admin filters beginner", js: true do
-    select "Has not any articles", from: :search_articles
-    select "Has not any comments", from: :search_comments
+    select "Has not any articles", from: :report_with_articles
+    select "Has not any comments", from: :report_with_comments
     click_on "Search"
 
     expect(page).not_to have_content(commentator.full_name)
@@ -62,8 +62,8 @@ feature "Reports" do
   end
 
   scenario "Admin filters expert", js: true do
-    select "Has at list one", from: :search_articles
-    select "Has at list one", from: :search_comments
+    select "Has at list one", from: :report_with_articles
+    select "Has at list one", from: :report_with_comments
     click_on "Search"
 
     expect(page).not_to have_content(commentator.full_name)

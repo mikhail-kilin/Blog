@@ -7,17 +7,11 @@
   - else
     .row
       .medium-3.columns
-        = form_for :search, url: search_admin_scope_reports_path, method: :get, remote: true do |f|
-          = f.label "Articles:"
-          = f.select :articles,
-           [["All", "all"],
-           ["Has at list one", "with_articles"],
-           ["Has not any articles", "without_articles"]]
-          = f.label "Comments:"
-          = f.select :comments,
-           [["All", "all"],
-           ["Has at list one", "with_comments"],
-           ["Has not any comments", "without_comments"]]
+        = simple_form_for :report, url: search_admin_scope_reports_path, method: :get, remote: true do |f|
+          = f.input :with_articles, selected: 0,
+           collection: {"All": nil, "Has at list one": true, "Has not any articles": false }
+          = f.input :with_comments, selected: 0,
+           collection: {"All": nil, "Has at list one": true, "Has not any comments": false }
           = f.submit "Search"
     table
       thead

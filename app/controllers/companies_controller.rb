@@ -26,7 +26,7 @@ class CompaniesController < ApplicationController
   end
 
   def filtered_articles
-    FilterArticlesQuery.new(raw_relation, filter_params).all
+    FilteredArticlesQuery.new(raw_relation, filter_params).all
   end
 
   def raw_relation
