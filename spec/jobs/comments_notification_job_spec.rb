@@ -5,7 +5,10 @@ describe CommentsNotificationJob do
   let(:user) { create :user }
   let(:company) { create :company, owner: user }
   let(:article) { create :article, user: user, company: company }
-  let!(:comment) { create :comment, article: article, user: user, company: company }
+
+  before do
+    create :comment, article: article, user: user, company: company
+  end
 
   describe "#perform" do
     it "send message" do
