@@ -1,5 +1,5 @@
 class CommentsNotificationJob < ApplicationJob
-  def perform(*_guests)
+  def perform
     User.with_articles.each do |user|
       send_message(user)
     end
