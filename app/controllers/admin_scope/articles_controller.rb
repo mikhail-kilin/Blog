@@ -1,6 +1,6 @@
 module AdminScope
   class ArticlesController < BaseController
-    before_action -> { authorize article }, except: :index
+    before_action -> { authorize article }, only: ["some_actions"]
 
     expose_decorated :article
     expose :articles, -> { set_articles }
