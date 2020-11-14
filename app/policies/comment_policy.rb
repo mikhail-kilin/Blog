@@ -1,11 +1,10 @@
 class CommentPolicy < ApplicationPolicy
   def create?
-    user.present? &&
-      (company.owner == user || company.authors.include?(user))
+    company_owner? || company.authors.exists?(user.id)
   end
 
   def update?
-    record.user == user || record.company.owner == user
+    record.user == user || company_owner?
   end
 
   alias new? create?
@@ -16,5 +15,9 @@ class CommentPolicy < ApplicationPolicy
 
   def company
     @company ||= record.company
+  end
+
+  def company_owner?
+    @company_owner ||= company.owner == user
   end
 end

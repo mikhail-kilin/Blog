@@ -15,7 +15,7 @@ article.showed
 
 = render article.sorted_comments
 
-- if policy(comment).new?
+- if user_signed_in? && policy(comment).new?
   h4 Comment:
   = render "comments/form"
 - else

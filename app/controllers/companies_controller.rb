@@ -22,7 +22,7 @@ class CompaniesController < ApplicationController
   end
 
   def sorted_articles
-    filtered_articles.sorted_by_update_time
+    filtered_articles.sorted_by_updated_at
   end
 
   def filtered_articles

@@ -20,11 +20,11 @@ feature "View Articles" do
     let(:another_user) { create :user }
     let!(:article_from_another_author) { create :article, :published, user: another_user, company: company }
     let(:last_article) { list_articles.last }
+    let(:first_title_word) { last_article.title.split(" ").last }
+    let(:first_content_word) { last_article.content.split(" ").last }
 
     scenario "Visitor can see search articles by title" do
       expect(page).not_to have_content(last_article.title)
-
-      first_title_word = last_article.title.split(" ").last
 
       fill_in :search_data, with: first_title_word
 
@@ -35,8 +35,6 @@ feature "View Articles" do
 
     scenario "Visitor can see search articles by content" do
       expect(page).not_to have_content(last_article.title)
-
-      first_content_word = last_article.content.split(" ").last
 
       fill_in :search_data, with: first_content_word
 

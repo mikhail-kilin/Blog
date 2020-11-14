@@ -10,10 +10,13 @@ describe FilteredReportQuery do
   let!(:beginner) { create :user }
   let!(:author_article) { create :article, :company, company: company, user: author }
   let!(:expert_article) { create :article, :company, company: company, user: expert }
-  let!(:commentator_comment) { create :comment, article: author_article, user: commentator }
-  let!(:expert_comment) { create :comment, article: expert_article, user: expert }
 
   describe "#all" do
+    before do
+      create :comment, article: author_article, user: commentator
+      create :comment, article: expert_article, user: expert
+    end
+
     context "with all items" do
       let(:filter_params) { {} }
 

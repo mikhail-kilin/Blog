@@ -14,7 +14,7 @@ describe FilteredArticlesQuery do
     context "with all items" do
       let(:filter_params) { {} }
 
-      it "returns all discounts" do
+      it "returns all articles" do
         expect(query.all).to match_array(Article.all.to_a)
       end
     end
@@ -22,7 +22,7 @@ describe FilteredArticlesQuery do
     context "with search by title" do
       let(:filter_params) { { data: "Test1" } }
 
-      it "returns all discounts" do
+      it "returns all articles" do
         expect(query.all).to match_array([title_word_article])
       end
     end
@@ -30,7 +30,7 @@ describe FilteredArticlesQuery do
     context "with search by content" do
       let(:filter_params) { { data: "Test2" } }
 
-      it "returns all discounts" do
+      it "returns all articles" do
         expect(query.all).to match_array([content_word_article])
       end
     end
@@ -38,7 +38,7 @@ describe FilteredArticlesQuery do
     context "with search by user" do
       let(:filter_params) { { data: "Test3" } }
 
-      it "returns all discounts" do
+      it "returns all articles" do
         expect(query.all).to match_array([article_from_another_author])
       end
     end

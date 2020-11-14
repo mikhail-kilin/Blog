@@ -1,8 +1,7 @@
 module AdminScope
   class ReportsController < BaseController
     expose :company, -> { current_user.own_company }
-    expose :authors, -> { raw_authors.sorted_by_comments_count }
-    expose :filtered_authors, -> { filtered_authors.sorted_by_comments_count }
+    expose :authors, -> { filtered_authors.sorted_by_comments_count }
 
     def show
       redirect_back fallback_location: admin_scope_articles_path and return if company.blank?

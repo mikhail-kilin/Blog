@@ -22,8 +22,8 @@ class Article < ApplicationRecord
   end
 
   scope :published, -> { where(status: "published") }
-  scope :sorted_by_update_time, -> { order(updated_at: :desc) }
-  scope :sorted_by_create_time, -> { order(created_at: :desc) }
+  scope :sorted_by_updated_at, -> { order(updated_at: :desc) }
+  scope :sorted_by_created_at, -> { order(created_at: :desc) }
   scope :editable, ->(user) { where(user: user).or where(company: user.own_company) }
   pg_search_scope :search_by_data, against: %i[title content], associated_against: { user: :full_name }
 end

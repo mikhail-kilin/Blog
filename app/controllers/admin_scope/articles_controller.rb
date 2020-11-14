@@ -1,6 +1,6 @@
 module AdminScope
   class ArticlesController < BaseController
-    before_action -> { authorize article }, only: ["some_actions"]
+    before_action -> { authorize article }, only: %w[show edit create update destroy]
 
     expose_decorated :article
     expose :articles, -> { set_articles }
@@ -49,7 +49,7 @@ module AdminScope
     end
 
     def set_articles
-      Article.editable(current_user).sorted_by_create_time.page(params[:page])
+      Article.editable(current_user).sorted_by_created_at.page(params[:page])
     end
   end
 end

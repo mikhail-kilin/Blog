@@ -6,10 +6,4 @@ class FilteredArticlesQuery < BaseFilteredQuery
   def by_data(relation, value)
     relation.search_by_data(value)
   end
-
-  private
-
-  def search?
-    params[:data].present?
-  end
 end
