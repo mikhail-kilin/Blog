@@ -11,7 +11,7 @@ describe CommentsNotificationJob do
   end
 
   describe "#perform" do
-    it "send message" do
+    it "sends message" do
       job.perform
       expect(ActionMailer::Base.deliveries.first.to.first).to eq user.email
     end

@@ -60,6 +60,7 @@ blocks:
         commands:
           - gem install bundler -v 2.1.4 --conservative
           - bundle install ${BUNDLE_ARGS} --local
+          - sem-service start redis
           - sem-service start postgres
           - bin/rails db:setup
 
