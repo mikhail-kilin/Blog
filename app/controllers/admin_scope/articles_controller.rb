@@ -1,9 +1,8 @@
 module AdminScope
   class ArticlesController < BaseController
-    before_action -> { authorize article }, except: :index
+    before_action -> { authorize article }, only: %w[show edit create update destroy]
 
     expose_decorated :article
-    expose :article_policy, -> { set_article_policy }
     expose :articles, -> { set_articles }
 
     def index
@@ -45,16 +44,12 @@ module AdminScope
 
     private
 
-    def set_article_policy
-      ArticlePolicy.new(current_user, article)
-    end
-
     def article_params
       params.require(:article).permit(:title, :content, :status, :company_id)
     end
 
     def set_articles
-      Article.editable(current_user).sorted_by_create_time.page(params[:page])
+      Article.editable(current_user).sorted_by_created_at.page(params[:page])
     end
   end
 end

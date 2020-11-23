@@ -21,4 +21,6 @@ class User < ApplicationRecord
   def last_week_comments_count
     articles.map(&:last_week_comments_count).sum
   end
+
+  scope :sorted_by_comments_count, -> { order(:comments_count) }
 end

@@ -15,6 +15,6 @@ class Comment < ApplicationRecord
     user.save
   end
 
-  scope :sorted, -> { order(created_at: :asc) }
   scope :last_week_comments, -> { where("created_at > ?", 1.week.ago) }
+  scope :sorted_by_created_at, -> { order(created_at: :asc) }
 end

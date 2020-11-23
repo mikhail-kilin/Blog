@@ -11,6 +11,6 @@ class ArticleDecorator < ApplicationDecorator
   end
 
   def sorted_comments
-    object.comments.sorted
+    object.comments.sorted_by_created_at
   end
 end
