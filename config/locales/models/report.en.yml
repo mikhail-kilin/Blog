@@ -1,0 +1,6 @@
+en:
+  simple_form:
+    labels:
+      report:
+        with_articles: "Articles"
+        with_comments: "Comments"

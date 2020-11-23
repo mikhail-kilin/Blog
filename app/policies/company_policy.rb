@@ -1,29 +1,18 @@
 class CompanyPolicy < ApplicationPolicy
-  def show?
-    manage?
-  end
-
-  def edit?
-    manage?
-  end
-
-  def update?
-    manage?
-  end
-
-  def new?
+  def create?
     @user.own_company.blank?
   end
 
-  def create?
-    new?
-  end
-
   def become_to_author?
-    @user.present? && !@record.authors.include?(@user)
+    user.present? && !record.authors.include?(user)
   end
 
-  def manage?
-    @record.owner == @user
+  def update?
+    record.owner == user
   end
+
+  alias new? create?
+  alias edit? update?
+  alias destroy? update?
+  alias show? update?
 end

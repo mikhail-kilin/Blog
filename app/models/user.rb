@@ -17,4 +17,6 @@ class User < ApplicationRecord
   scope :without_comments, -> { where(comments_count: 0) }
   scope :with_articles, -> { where("articles_count > 0") }
   scope :without_articles, -> { where(articles_count: 0) }
+
+  scope :sorted_by_comments_count, -> { order(:comments_count) }
 end

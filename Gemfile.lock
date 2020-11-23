@@ -291,6 +291,9 @@ GEM
     parser (2.7.1.0)
       ast (~> 2.4.0)
     pg (1.2.3)
+    pg_search (2.3.4)
+      activerecord (>= 5.2)
+      activesupport (>= 5.2)
     phantomjs (2.1.1.0)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
@@ -547,6 +550,7 @@ DEPENDENCIES
   mini_magick
   newrelic_rpm
   pg
+  pg_search
   poltergeist
   premailer-rails
   puma

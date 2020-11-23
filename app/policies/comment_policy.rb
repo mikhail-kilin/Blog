@@ -1,28 +1,23 @@
 class CommentPolicy < ApplicationPolicy
-  def new?
-    company = @record.company
-    user.present? &&
-      (company.owner == @user.user || company.authors.include?(@user.user))
-  end
-
   def create?
-    company = @record.company
-    company.owner == @user || company.authors.include?(@user)
-  end
-
-  def edit?
-    manage?
+    company_owner? || company.authors.exists?(user.id)
   end
 
   def update?
-    manage?
+    record.user == user || company_owner?
   end
 
-  def destroy?
-    manage?
+  alias new? create?
+  alias edit? update?
+  alias destroy? update?
+
+  private
+
+  def company
+    @company ||= record.company
   end
 
-  def manage?
-    @record.user == @user || @record.company.owner == @user
+  def company_owner?
+    @company_owner ||= company.owner == user
   end
 end
