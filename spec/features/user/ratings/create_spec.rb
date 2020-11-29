@@ -5,9 +5,9 @@ feature "Create Rating" do
   let(:company) { create :company, owner: current_user }
   let(:article) { create :article, :company, user: current_user, company: company }
   let(:another_user) { create :user }
-  let!(:rating) { create :rating, user: another_user, article: article, rate: 5 }
 
   background do
+    create :rating, user: another_user, article: article, rate: 5
     visit article_path(article)
   end
 
