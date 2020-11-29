@@ -14,7 +14,9 @@ class CommentsNotificationJob < ApplicationJob
   end
 
   def count_of_new_comments(user)
-    user.last_week_comments_count
+    count = user.week_comments_count
+    user.update week_comments_count: 0
+    count
   end
 
   def users

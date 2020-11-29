@@ -18,9 +18,5 @@ class User < ApplicationRecord
   scope :with_articles, -> { where("articles_count > 0") }
   scope :without_articles, -> { where(articles_count: 0) }
 
-  def last_week_comments_count
-    articles.map(&:last_week_comments_count).sum
-  end
-
   scope :sorted_by_comments_count, -> { order(:comments_count) }
 end

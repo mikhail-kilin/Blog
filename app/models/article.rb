@@ -26,8 +26,4 @@ class Article < ApplicationRecord
   scope :sorted_by_created_at, -> { order(created_at: :desc) }
   scope :editable, ->(user) { where(user: user).or where(company: user.own_company) }
   pg_search_scope :search_by_data, against: %i[title content], associated_against: { user: :full_name }
-
-  def last_week_comments_count
-    comments.last_week_comments.count
-  end
 end
