@@ -12,6 +12,10 @@ article.showed
           = "Published #{distance_of_time_in_words_to_now(article.updated_at)} ago"
         div
           = "#{article.author}"
+    - if policy(rating).update?
+        .medium-2.columns
+          div(id="review")
+    = render "form"
 
 = render article.sorted_comments
 

@@ -13,4 +13,10 @@ class ArticleDecorator < ApplicationDecorator
   def sorted_comments
     object.comments.sorted_by_created_at
   end
+
+  def rating
+    return "Nobody has rated on this article yet" if object.ratings.blank?
+
+    "#{object.ratings.average(:rate).round(2)}/5"
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_17_144204) do
+ActiveRecord::Schema.define(version: 2020_11_29_151451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,12 @@ ActiveRecord::Schema.define(version: 2020_06_17_144204) do
     t.index ["company_id"], name: "index_companies_users_on_company_id"
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.integer "article_id"
+    t.integer "user_id"
+    t.integer "rate"
+  end
+
   create_table "static_pages", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -95,6 +101,7 @@ ActiveRecord::Schema.define(version: 2020_06_17_144204) do
     t.string "avatar"
     t.integer "articles_count", default: 0, null: false
     t.integer "comments_count", default: 0, null: false
+    t.integer "week_comments_count", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
