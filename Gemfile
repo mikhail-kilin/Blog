@@ -42,6 +42,8 @@ gem "wkhtmltopdf-binary"
 # all other gems
 gem "active_model_serializers", "~> 0.10.0"
 gem "apipie-rails"
+gem "axlsx"
+gem "axlsx_rails"
 gem "decent_decoration"
 gem "decent_exposure"
 gem "devise"
