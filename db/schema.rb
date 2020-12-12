@@ -62,9 +62,12 @@ ActiveRecord::Schema.define(version: 2020_11_29_151451) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.integer "article_id"
-    t.integer "user_id"
-    t.integer "rate"
+    t.bigint "article_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "rate", default: 0, null: false
+    t.index ["article_id", "user_id"], name: "index_ratings_on_article_id_and_user_id", unique: true
+    t.index ["article_id"], name: "index_ratings_on_article_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "static_pages", force: :cascade do |t|
@@ -107,4 +110,6 @@ ActiveRecord::Schema.define(version: 2020_11_29_151451) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "ratings", "articles"
+  add_foreign_key "ratings", "users"
 end

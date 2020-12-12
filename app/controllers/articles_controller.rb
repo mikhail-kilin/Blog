@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
   private
 
   def set_article
-    Article.includes(:comments).find_by(id: params["id"])
+    Article.includes(:comments, :ratings).find_by(id: params["id"])
   end
 
   def set_comment
@@ -21,7 +21,6 @@ class ArticlesController < ApplicationController
   end
 
   def set_rating
-    Rating.find_by(article: article, user: current_user) ||
-      Rating.new(article: article, user: current_user)
+    Rating.find_or_initialize_by(article: article, user: current_user)
   end
 end

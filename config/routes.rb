@@ -6,8 +6,6 @@ Rails.application.routes.draw do
     resource :message, only: %i[new create]
   end
 
-  resources :ratings, only: %i[create update]
-
   namespace :v1 do
     defaults format: :json do
       resources :companies, only: :authors do
@@ -26,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :articles, only: :show do
     resources :comments, except: %i[index new]
+    resources :ratings, only: %i[create update]
   end
 
   namespace :admin_scope do
