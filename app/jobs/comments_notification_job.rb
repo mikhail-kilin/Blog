@@ -1,16 +1,19 @@
 class CommentsNotificationJob < ApplicationJob
   def perform
-    users.each do |user|
-      send_message(user)
-    end
+    schedule_comments_notifications
     CommentsNotificationJob.set(wait: 1.week).perform_later
   end
 
   private
 
-  def send_message(user)
-    comments_count = count_of_new_comments(user)
-    CommentNotificationMailer.with(user: user, count: comments_count).send_message.deliver if comments_count.positive?
+  def schedule_comments_notifications
+    users_with_articles.each { |user| schedule_comment_notification(user) }
+  end
+
+  def schedule_comment_notification(user)
+    count = count_of_new_comments(user)
+
+    CommentNotificationMailer.with(user: user, comments_count: count).send_message.deliver if count.positive?
   end
 
   def count_of_new_comments(user)
@@ -19,7 +22,7 @@ class CommentsNotificationJob < ApplicationJob
     count
   end
 
-  def users
+  def users_with_articles
     User.with_articles
   end
 end

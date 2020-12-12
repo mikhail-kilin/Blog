@@ -3,7 +3,7 @@ class CommentNotificationMailer < ApplicationMailer
 
   def send_message
     @user = params[:user]
-    @count = params[:count]
+    @comments_count = params[:comments_count]
 
     mail(to: @user.email, subject: "Your articles have new comments")
   end

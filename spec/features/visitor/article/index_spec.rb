@@ -1,29 +1,27 @@
 require "rails_helper"
 
 feature "View Articles" do
-  let!(:user) { FactoryBot.create :user }
-  let!(:company) { FactoryBot.create :company, owner: user }
-  let(:draft) { FactoryBot.create :article, :draft, :company, user: user, company: company }
+  let(:user) { create :user }
+  let(:company) { create :company, owner: user }
+  let!(:last_article) { create :article, :published, :company, user: user, company: company }
+  let!(:draft_article) { create :article, :draft, :company, user: user, company: company }
+  let(:first_title) { Article.order(created_at: :desc).first.title }
+  let(:last_title) { last_article.title }
 
   background do
-    FactoryBot.create_list :article, 20, :published, :company, user: user, company: company
+    create_list :article, 20, :published, :company, user: user, company: company
     visit company_path(company)
   end
 
   scenario "Visitor can see sorted paginated articles" do
-    first_title = Article.order(created_at: :desc).first.title
-    last_title = Article.order(created_at: :desc).last.title
-
     expect(page).to have_content(first_title)
     expect(page).not_to have_content(last_title)
+    expect(page).not_to have_content(draft_article.title)
 
     click_on "Last »"
 
     expect(page).not_to have_content(first_title)
     expect(page).to have_content(last_title)
-  end
-
-  scenario "Visitor can see only published articles" do
-    expect(page).not_to have_content(draft.title)
+    expect(page).not_to have_content(draft_article.title)
   end
 end
