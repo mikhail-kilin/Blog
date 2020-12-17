@@ -42,6 +42,8 @@ gem "wkhtmltopdf-binary"
 # all other gems
 gem "active_model_serializers", "~> 0.10.0"
 gem "apipie-rails"
+gem "axlsx"
+gem "axlsx_rails"
 gem "decent_decoration"
 gem "decent_exposure"
 gem "devise"
@@ -60,6 +62,7 @@ gem "rack-mini-profiler", require: false, git: "https://github.com/MiniProfiler/
 gem "responders"
 gem "rollbar"
 gem "seedbank"
+gem "sidekiq"
 gem "stackprof"
 
 group :staging, :production do

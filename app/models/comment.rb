@@ -7,6 +7,7 @@ class Comment < ApplicationRecord
 
   after_create do
     user.comments_count += 1
+    user.week_comments_count += 1
     user.save
   end
 
