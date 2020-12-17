@@ -8,6 +8,7 @@ class Article < ApplicationRecord
   belongs_to :user
   belongs_to :company
   has_many :comments, dependent: :destroy
+  has_many :ratings, dependent: :destroy
 
   paginates_per 5
 

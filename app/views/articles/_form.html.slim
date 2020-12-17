@@ -1,0 +1,5 @@
+.row(id="rating_data")
+  .medium-6.columns
+    = "Rating: #{article.rating}"
+  = simple_form_for [article, rating], remote: true do |f|
+    = f.input :rate, as: :hidden

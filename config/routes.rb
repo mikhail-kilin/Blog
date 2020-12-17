@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :articles, only: :show do
     resources :comments, except: %i[index new]
+    resources :ratings, only: %i[create update]
   end
 
   namespace :admin_scope do
